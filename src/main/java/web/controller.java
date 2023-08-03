@@ -61,7 +61,12 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("signUp.jsp").forward(request, response);
     }
+    
+    private void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -86,6 +91,11 @@ public class controller extends HttpServlet {
                 case "register":
                     this.registrar(request, response);
                     break;
+                    
+                case "toPdf":
+                    this.crearReporteAlumno(request, response);
+                    break;
+                    
                 default:
                     throw new AssertionError();
             }
