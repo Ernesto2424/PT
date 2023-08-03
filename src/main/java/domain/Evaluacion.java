@@ -70,5 +70,17 @@ public class Evaluacion {
         sb.append('}');
         return sb.toString();
     }
+    
+    public int getIdRecurso(){
+        return this.recurso.getId();
+    }
+    
+    public String getNombre(){
+        return this.recurso.getNombre();
+    }
+    
+    public String getDescripcion(){
+        return this.recurso.getDescripcion();
+    }
 
 }
