@@ -76,21 +76,40 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("signUp.jsp").forward(request, response);
     }
-    
+
+    private void menu(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            request.getRequestDispatcher("menu.jsp").forward(request, response);
+        }else{
+            response.sendRedirect("index.jsp");
+        }
+    }
+
+    private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        HttpSession sesion = request.getSession();
+        if (sesion != null) {
+            sesion.invalidate();
+        }
+        //redirigimos al inicio
+        response.sendRedirect("index.jsp");
+    }
+
     private void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ServletOutputStream out = response.getOutputStream();
         try {
             InputStream logoEmpresa = this.getServletConfig()
                     .getServletContext()
                     .getResourceAsStream("logo.png"),
-                    
                     reporteAlumno = this.getServletConfig()
                             .getServletContext()
                             .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
-            
-            if (logoEmpresa != null  && reporteAlumno != null) {
+
+            if (logoEmpresa != null && reporteAlumno != null) {
                 String jsonEvalaucionAlumno = request.getParameter("lista"); //OJO
                 Gson gson = new Gson();
                 List<Evaluacion> reporteEvaluacion = new ArrayList<>();
@@ -126,7 +145,7 @@ public class controller extends HttpServlet {
         }
 
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -151,11 +170,19 @@ public class controller extends HttpServlet {
                 case "register":
                     this.registrar(request, response);
                     break;
-                    
+
                 case "toPdf":
                     this.crearReporteAlumno(request, response);
                     break;
-                    
+
+                case "menu":
+                    this.menu(request, response);
+                    break;
+
+                case "cerrarSesion":
+                    this.cerrarSesion(request, response);
+                    break;
+
                 default:
                     throw new AssertionError();
             }
@@ -194,13 +221,20 @@ public class controller extends HttpServlet {
         if (usuario != null) {
             //preguntamos si la contraseña es la misma
             if (password.equals(usuario.getPassword())) {
+
+                Alumno alumnoEncontrado = null;
+                AlumnoDao alumno = new AlumnoDaoImp();
+                alumnoEncontrado = alumno.selectById(new Alumno(matricula));
+                sesion.setAttribute("alumno", alumnoEncontrado);
                 sesion.setAttribute("usuario", "correcto");
+                System.out.println(alumnoEncontrado.toString());
+
             } else {
                 sesion.setAttribute("usuario", null);
                 sesion.setAttribute("mensaje", "La contraseña no es Correcta");
 
             }
-        }else{
+        } else {
             sesion.setAttribute("mensaje", "El usuario ingresado no Existe");
         }
 

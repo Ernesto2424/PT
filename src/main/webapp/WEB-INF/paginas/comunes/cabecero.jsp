@@ -44,7 +44,7 @@
             </ul>
             <form class="d-flex" role="search">
               <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-              <a class="nav-link active" href="#">Ernesto Flores Machuca    (SALIR)</a>
+              <a class="nav-link active" href="${pageContext.request.contextPath}/controller?at=cerrarSesion">${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} (SALIR)</a>
               
             </form>
           </div>

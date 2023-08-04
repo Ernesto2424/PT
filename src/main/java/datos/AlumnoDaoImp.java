@@ -65,7 +65,7 @@ public class AlumnoDaoImp implements AlumnoDao {
             rs = pst.executeQuery();
 
             //rs.next();
-            rs.absolute(1);
+            while(rs.next()){
             String matricula = rs.getString("matricula");
             String nombre = rs.getString("nombre");
             String primerApellido = rs.getString("primer_apellido");
@@ -73,7 +73,8 @@ public class AlumnoDaoImp implements AlumnoDao {
             String grupo = rs.getString("grupo");
             String turno = rs.getString("turno");
             alumnoBuscado = new Alumno(matricula, nombre, primerApellido, segundoApellido, grupo, turno);
-
+            }
+            
         } catch (SQLException e) {
             e.printStackTrace(System.out);
         } catch (ClassNotFoundException ex) {

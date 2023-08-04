@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${sessionScope['usuario']!=null}">
-    <% response.sendRedirect("http://www.google.com");%>
+    <% response.sendRedirect("/proyectoTerminal/controller?at=menu");%>
 </c:if>
 
 <!DOCTYPE html>
