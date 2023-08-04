@@ -4,20 +4,35 @@
  */
 package web;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import datos.AlumnoDao;
 import datos.AlumnoDaoImp;
 import datos.UsuarioDao;
 import datos.UsuarioDaoImp;
 import domain.Alumno;
+import domain.Evaluacion;
 import domain.Usuario;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 /**
  *
@@ -64,6 +79,51 @@ public class controller extends HttpServlet {
     
     private void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        ServletOutputStream out = response.getOutputStream();
+        try {
+            InputStream logoEmpresa = this.getServletConfig()
+                    .getServletContext()
+                    .getResourceAsStream("logo.png"),
+                    
+                    reporteAlumno = this.getServletConfig()
+                            .getServletContext()
+                            .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
+            
+            if (logoEmpresa != null  && reporteAlumno != null) {
+                String jsonEvalaucionAlumno = request.getParameter("lista"); //OJO
+                Gson gson = new Gson();
+                List<Evaluacion> reporteEvaluacion = new ArrayList<>();
+                List<Evaluacion> reporteEvaluacion2 = new ArrayList<>();
+
+                reporteEvaluacion.add(new Evaluacion());
+                reporteEvaluacion2 = gson.fromJson(jsonEvalaucionAlumno, new TypeToken<List<Evaluacion>>() {
+                }.getType());
+                reporteEvaluacion.addAll(reporteEvaluacion2);
+
+                JasperReport report = (JasperReport) JRLoader.loadObject(reporteAlumno);
+                JRBeanArrayDataSource ds = new JRBeanArrayDataSource(reporteEvaluacion.toArray());
+
+                Map<String, Object> parameters = new HashMap();
+                parameters.put("ds", ds);
+                parameters.put("logoEmpresa", logoEmpresa);
+                response.setContentType("application/pdf");
+                response.addHeader("Content-disposition", "inline; filename=ReporteEvaluacionAlumno.pdf");
+                JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, ds);
+                JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+                out.flush();
+                out.close();
+            } else {
+                response.setContentType("text/plain");
+                out.println("no se pudo generar el reporte");
+                out.println("esto puede debrse a que la lista de datos no fue recibida o el archivo plantilla del reporte no se ha encontrado");
+                out.println("contacte a soporte");
+            }
+        } catch (Exception e) {
+            response.setContentType("text/plain");
+            out.print("ocurrió un error al intentar generar el reporte:" + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
     
