@@ -87,6 +87,11 @@ public class controller extends HttpServlet {
         request.getRequestDispatcher("visuales.jsp").forward(request, response);
     }
     
+    private void recursosAudioVisuales(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("audioVisuales.jsp").forward(request, response);
+    }
+    
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
@@ -184,6 +189,10 @@ public class controller extends HttpServlet {
                     
                 case "rv":
                     this.recursosVisuales(request, response);
+                    break;
+                    
+                case "rav":
+                    this.recursosAudioVisuales(request, response);
                     break;
                     
                 case "cerrarSesion":
