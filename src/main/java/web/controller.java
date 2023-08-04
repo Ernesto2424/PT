@@ -86,6 +86,8 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
         if(sesion!=null){
+            sesion.removeAttribute("alumno");
+            sesion.removeAttribute("usuario");
             sesion.invalidate();
         }
         //redirigimos al inicio
