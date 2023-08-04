@@ -35,7 +35,8 @@
                   Recursos
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Visuales</a></li>
+                    <!<!-- rv: Recursos visuales -->
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rv">Visuales</a></li>
                   <li><a class="dropdown-item" href="#">AudioVisuales</a></li>
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Test</a></li>
