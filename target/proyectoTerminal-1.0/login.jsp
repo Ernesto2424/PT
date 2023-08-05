@@ -58,13 +58,13 @@
 
                     <!--login-->
 
-                    <form action="${pageContext.request.contextPath}/controller?at=login" method="POST" class="was-validated">
+                    <form action="${pageContext.request.contextPath}/controller?at=login" method="POST" class="needs-validation" novalidate>
 
                         <div class="mb-4">
                             <label for="matricula" class="form-label">Matricula:</label>
                             <input type="text" name="matricula" id="validationCustom01" required class="form-control">
                             <div class="invalid-feedback">
-                                Ingrese su matricula o CURP!
+                                Ingrese su matricula o CURP
                             </div>
                         </div>
 
@@ -96,7 +96,27 @@
         </div>
 
 
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (() => {
+                
 
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+                const forms = document.querySelectorAll('.needs-validation');
+
+// Loop over them and prevent submission
+                Array.from(forms).forEach(form => {
+                    form.addEventListener('submit', event => {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            })();
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
