@@ -37,9 +37,9 @@
                 <ul class="dropdown-menu">
                     <!<!-- rv: Recursos visuales -->
                     <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rv">Visuales</a></li>
-                  <li><a class="dropdown-item" href="#">AudioVisuales</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rav">AudioVisuales</a></li>
                   <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Test</a></li>
+                  <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rtest">Test</a></li>
                 </ul>
               </li>
             </ul>
