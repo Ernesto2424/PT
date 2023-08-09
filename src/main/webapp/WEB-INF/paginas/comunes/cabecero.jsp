@@ -13,10 +13,10 @@
                       Juegos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos/alfabeto/alfabetoSonido.jsp">TEMA 1</a></li>
-                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos/alfabeto/memoramaAlfabeto.jsp">TEMA 2</a></li>
-                      <li><a class="dropdown-item" href="#">TEMA 3</a></li>
-                      <li><a class="dropdown-item" href="#">TEMA 4</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos/alfabeto/alfabetoSonido.jsp">El Alfabeto</a></li>
+                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos/alfabeto/memoramaAlfabeto.jsp">Los Numeros</a></li>
+                      <li><a class="dropdown-item" href="#">Los Pronombres Personales</a></li>
+                      <li><a class="dropdown-item" href="#">El Cuerpo</a></li>
                       <li><a class="dropdown-item" href="#">TEMA 5</a></li>
                       <li><a class="dropdown-item" href="#">TEMA 6</a></li>
                       <li><hr class="dropdown-divider"></li>
