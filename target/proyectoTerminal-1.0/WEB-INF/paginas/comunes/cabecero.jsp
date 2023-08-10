@@ -13,8 +13,8 @@
                       Juegos
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos/alfabeto/alfabetoSonido.jsp">El Alfabeto</a></li>
-                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos/alfabeto/memoramaAlfabeto.jsp">Los Numeros</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#alfabeto">El Alfabeto</a></li>
+                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#numeros">Los Numeros</a></li>
                       <li><a class="dropdown-item" href="#">Los Pronombres Personales</a></li>
                       <li><a class="dropdown-item" href="#">El Cuerpo</a></li>
                       <li><a class="dropdown-item" href="#">La Familia</a></li>
