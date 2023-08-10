@@ -17,7 +17,7 @@
                       <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#numeros">Los Numeros</a></li>
                       <li><a class="dropdown-item" href="#">Los Pronombres Personales</a></li>
                       <li><a class="dropdown-item" href="#">El Cuerpo</a></li>
-                      <li><a class="dropdown-item" href="#">La Familia</a></li>
+                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#familia">La Familia</a></li>
                       <li><a class="dropdown-item" href="#">TEMA 6</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">TEMA ADICIONAL</a></li>
