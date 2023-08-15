@@ -6,18 +6,18 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
 
-        <div class="col">
+        <div class="col" id="alfabeto">
           <div class="card shadow-sm">
             <img src="/img/nahu.png" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
-                <div class="card-body" id="alfabeto">
-              <p class="card-text">El memorama es un juego de mesa o tarjetas que consiste en emparejar cartas o fichas que contienen imágenes o palabras. El objetivo del juego es recordar y encontrar las parejas correctas, que generalmente se colocan boca abajo sobre una superficie.</p>
+                <div class="card-body" >
+                    <p class="card-text"> Memorama para descubrir el alfabeto nahuatl </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
-                  <a href="/memorama.html" class="btn  btn-primary" target="_blank">Play</a>
+                    <a href="${pageContext.request.contextPath}../../../juegos/alfabeto/memoramaAlfabeto.jsp" class="btn  btn-primary" target="_blank">Jugar</a>
                   
                 </div>
-                <small class="text-body-secondary">9 mins</small>
+                <small class="text-body-secondary">Alfabeto</small>
               </div>
             </div>
           </div>
