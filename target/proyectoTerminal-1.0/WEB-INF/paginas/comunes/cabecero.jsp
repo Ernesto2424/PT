@@ -2,7 +2,7 @@
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary" >
         <div class="container-fluid">
-            <a class="navbar-brand" href="${pageContext.request.contextPath}/menu.jsp"> <img src="logo.png" alt="logo" width="150px" height="100px"> </a>
+            <a class="navbar-brand" href="${pageContext.request.contextPath}/controller?at=menu"> <img src="logo.png" alt="logo" width="150px" height="100px"> </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -15,8 +15,8 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#alfabeto">El Alfabeto</a></li>
                       <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#numeros">Los Numeros</a></li>
-                      <li><a class="dropdown-item" href="#">Los Pronombres Personales</a></li>
-                      <li><a class="dropdown-item" href="#">El Cuerpo</a></li>
+                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#pronombresP">Los Pronombres Personales</a></li>
+                      <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#cuerpo">El Cuerpo</a></li>
                       <li><a class="dropdown-item" href="${pageContext.request.contextPath}/juegos.jsp#familia">La Familia</a></li>
                       <li><a class="dropdown-item" href="#">TEMA 6</a></li>
                       <li><hr class="dropdown-divider"></li>
