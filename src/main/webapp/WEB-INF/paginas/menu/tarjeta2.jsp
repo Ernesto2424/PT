@@ -1,7 +1,7 @@
 <div class="card mb-3" style="max-width: 750px;  left: 500px;" >
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="logo.png" class="img-fluid rounded-start" alt="..." height="600px">
+              <img src="../../../img/img_menu/logo.png" class="img-fluid rounded-start" alt="..." height="600px">
           </div>
           <div class="col-md-8">
             <div class="card-body">
