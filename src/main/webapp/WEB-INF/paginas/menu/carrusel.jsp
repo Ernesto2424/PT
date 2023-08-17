@@ -2,22 +2,22 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="../../../img/img_menu/c3.jpg" class="d-block w-100" alt="...">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/c3.jpg?raw=true" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../../img/img_menu/c2.jpg" class="d-block w-100" alt="...">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/c2.jpg?raw=true" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../../img/img_menu/c5.jpg" class="d-block w-100" alt="...">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/c5.jpg?raw=true" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../../img/img_menu/c6.jpg" class="d-block w-100" alt="...">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/c6.jpg?raw=true" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../../img/img_menu/c7.jpeg" class="d-block w-100" alt="...">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/c7.jpeg?raw=true" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-            <img src="../../../img/img_menu/cuento.jpg" class="d-block w-100" alt="...">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/cuento.jpg?raw=true" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
             <div class="ratio ratio-21x9">

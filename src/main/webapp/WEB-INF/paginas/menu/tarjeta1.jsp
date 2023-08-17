@@ -2,7 +2,7 @@
 <div class="card mb-3" style="max-width: 600px;">
         <div class="row g-0">
           <div class="col-md-4">
-              <img src="../../../img/img_menu/nahu.png" class="img-fluid rounded-start" alt="...">
+              <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/nahu.png?raw=true" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">

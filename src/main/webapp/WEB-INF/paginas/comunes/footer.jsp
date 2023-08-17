@@ -6,7 +6,7 @@
         <nav class="row">
 
             <a href="#" class="col-3 text-reset-uppercase d-flex align-items-center">
-                <img src="../../../img/img_menu/logo.png" alt="logo" class="img-logo mr-2" width="150px" height="80px" >
+                <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/logo.png?raw=true" alt="logo" class="img-logo mr-2" width="150px" height="80px" >
             </a>  
 
             <ul class="col-3 list-unstyled">
