@@ -8,7 +8,7 @@
 
         <div class="col" id="alfabeto">
           <div class="card shadow-sm">
-            <img src="/img/nahu.png" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
+              <img src="../../../img/img_portadaJuegos/memAlfabeto.jpg" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
                     <p class="card-text"> Memorama para descubrir el alfabeto nahuatl </p>
               <div class="d-flex justify-content-between align-items-center">
@@ -27,7 +27,7 @@
 
         <div class="col" id="alfabeto">
           <div class="card shadow-sm">
-            <img src="/img/nahu.png" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
+              <img src="../../../img/img_portadaJuegos/sonidoAlbabeto.png" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
                     <p class="card-text"> Memorama para descubrir el alfabeto nahuatl </p>
               <div class="d-flex justify-content-between align-items-center">
