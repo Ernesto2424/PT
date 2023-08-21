@@ -43,8 +43,11 @@
     </div>
     <!-- Pantalla final -->
     <div id="pantalla-final">
+        <form action="action" method="POST">
         <h2>CORRECTAS: <span id="numCorrectas">3</span></h2>
         <h2>INCORRECTAS: <span id="numIncorrectas">2</span></h2>
+        <input type="submit" class="btn" name="Enviar">
+        </form>
         <button class="btn" onclick="volverAlInicio()">VOLVER AL INICIO</button>
     </div>
 
