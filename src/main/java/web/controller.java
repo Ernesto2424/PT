@@ -53,7 +53,7 @@ public class controller extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try ( PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -76,31 +76,31 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("signUp.jsp").forward(request, response);
     }
-    
+
     private void menu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("menu.jsp").forward(request, response);
     }
-    
+
     private void recursosVisuales(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("visuales.jsp").forward(request, response);
     }
-    
+
     private void recursosAudioVisuales(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("audioVisuales.jsp").forward(request, response);
     }
-    
-     private void examenes(HttpServletRequest request, HttpServletResponse response)
+
+    private void examenes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("examenes.jsp").forward(request, response);
     }
-    
+
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
-        if(sesion!=null){
+        if (sesion != null) {
             sesion.removeAttribute("alumno");
             sesion.removeAttribute("usuario");
             sesion.invalidate();
@@ -108,21 +108,20 @@ public class controller extends HttpServlet {
         //redirigimos al inicio
         response.sendRedirect("index.jsp");
     }
-    
+
     private void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ServletOutputStream out = response.getOutputStream();
         try {
             InputStream logoEmpresa = this.getServletConfig()
                     .getServletContext()
                     .getResourceAsStream("logo.png"),
-                    
                     reporteAlumno = this.getServletConfig()
                             .getServletContext()
                             .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
-            
-            if (logoEmpresa != null  && reporteAlumno != null) {
+
+            if (logoEmpresa != null && reporteAlumno != null) {
                 String jsonEvalaucionAlumno = request.getParameter("lista"); //OJO
                 Gson gson = new Gson();
                 List<Evaluacion> reporteEvaluacion = new ArrayList<>();
@@ -158,7 +157,7 @@ public class controller extends HttpServlet {
         }
 
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -183,31 +182,31 @@ public class controller extends HttpServlet {
                 case "register":
                     this.registrar(request, response);
                     break;
-                    
+
                 case "toPdf":
                     this.crearReporteAlumno(request, response);
                     break;
-                    
+
                 case "menu":
                     this.menu(request, response);
                     break;
-                    
+
                 case "rv":
                     this.recursosVisuales(request, response);
                     break;
-                    
+
                 case "rav":
                     this.recursosAudioVisuales(request, response);
                     break;
-                    
+
                 case "rtest":
                     this.examenes(request, response);
                     break;
-                    
+
                 case "cerrarSesion":
                     this.cerrarSesion(request, response);
                     break;
-                    
+
                 default:
                     throw new AssertionError();
             }
@@ -246,20 +245,20 @@ public class controller extends HttpServlet {
         if (usuario != null) {
             //preguntamos si la contraseña es la misma
             if (password.equals(usuario.getPassword())) {
-                
+
                 Alumno alumnoEncontrado = null;
                 AlumnoDao alumno = new AlumnoDaoImp();
                 alumnoEncontrado = alumno.selectById(new Alumno(matricula));
                 sesion.setAttribute("alumno", alumnoEncontrado);
                 sesion.setAttribute("usuario", "correcto");
                 System.out.println(alumnoEncontrado.toString());
-                
+
             } else {
                 sesion.setAttribute("usuario", null);
                 sesion.setAttribute("mensaje", "La contraseña no es Correcta");
 
             }
-        }else{
+        } else {
             sesion.setAttribute("mensaje", "El usuario ingresado no Existe");
         }
 
@@ -299,6 +298,17 @@ public class controller extends HttpServlet {
         this.login(request, response);
     }
 
+    protected void evaluar(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //obtener los datos del test
+        int numCorrectas = Integer.parseInt(request.getParameter("numCorrectas"));
+        int numIncorrectas = Integer.parseInt(request.getParameter("numIncorrectas"));
+
+        System.out.println("numCorrectas = " + numCorrectas);
+        System.out.println("numIncorrectas = " + numIncorrectas);
+
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -313,6 +323,9 @@ public class controller extends HttpServlet {
                     break;
                 case "signUp":
                     this.signUp(request, response);
+                    break;
+                case "evaluar":
+                    this.evaluar(request, response);
                     break;
                 default:
                     throw new AssertionError();
