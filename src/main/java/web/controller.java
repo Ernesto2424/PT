@@ -92,6 +92,11 @@ public class controller extends HttpServlet {
         request.getRequestDispatcher("audioVisuales.jsp").forward(request, response);
     }
     
+     private void examenes(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("examenes.jsp").forward(request, response);
+    }
+    
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
@@ -193,6 +198,10 @@ public class controller extends HttpServlet {
                     
                 case "rav":
                     this.recursosAudioVisuales(request, response);
+                    break;
+                    
+                case "rtest":
+                    this.examenes(request, response);
                     break;
                     
                 case "cerrarSesion":

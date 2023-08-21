@@ -95,8 +95,8 @@
 
         <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"/>
         <main>
-            <jsp:include page="WEB-INF/paginas/juegos/descripcionCabecero.jsp"/>
-            <jsp:include page="WEB-INF/paginas/juegos/albumTarjetas.jsp"/>
+            <jsp:include page="WEB-INF/paginas/examenes/descripcionCabecero.jsp"/>
+            <jsp:include page="WEB-INF/paginas/examenes/albumTarjetas.jsp"/>
         </main>
         <jsp:include page="WEB-INF/paginas/comunes/footer.jsp"/>
 
