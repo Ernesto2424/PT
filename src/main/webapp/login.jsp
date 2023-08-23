@@ -62,7 +62,8 @@
 
                         <div class="mb-4">
                             <label for="matricula" class="form-label">Matricula:</label>
-                            <input type="text" name="matricula" id="validationCustom01" required class="form-control">
+                            <input type="text" name="matricula" id="validationCustom01" required class="form-control"
+                                   onkeypress="return checka(event)">
                             <div class="invalid-feedback">
                                 Ingrese su matricula o CURP
                             </div>
@@ -96,27 +97,45 @@
         </div>
 
 
+
+
+
         <script>
-            // Example starter JavaScript for disabling form submissions if there are invalid fields
-            (() => {
-                
+            function checka(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patrón de entrada, en este caso solo acepta numeros y letras
+                                    patron = /[A-Za-z0-9]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }</script>
+        <script>
+                                       // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                       (() => {
+
 
 // Fetch all the forms we want to apply custom Bootstrap validation styles to
-                const forms = document.querySelectorAll('.needs-validation');
+                                           const forms = document.querySelectorAll('.needs-validation');
 
 // Loop over them and prevent submission
-                Array.from(forms).forEach(form => {
-                    form.addEventListener('submit', event => {
-                        if (!form.checkValidity()) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                        }
+                                           Array.from(forms).forEach(form => {
+                                               form.addEventListener('submit', event => {
+                                                   if (!form.checkValidity()) {
+                                                       event.preventDefault();
+                                                       event.stopPropagation();
+                                                   }
 
-                        form.classList.add('was-validated');
-                    }, false);
-                });
-            })();
+                                                   form.classList.add('was-validated');
+                                               }, false);
+                                           });
+                                       })();
         </script>
+
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 

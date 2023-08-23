@@ -62,7 +62,7 @@
 
                         <div class="mb-4">
                             <label for="matricula" class="form-label">Matricula ó CURP:</label>
-                            <input type="text" name="matricula" id="validationCustom01" required="true" class="form-control">
+                            <input type="text" name="matricula" id="validationCustom01" required="true" class="form-control"  onkeypress="return checka(event)">
                             <div class="invalid-feedback">
                                 Ingrese un valor valido
                             </div>
@@ -70,7 +70,7 @@
 
                         <div class="mb-4">
                             <label for="nombre" class="form-label">Nombre(s):</label>
-                            <input type="text" name="nombre" id="validationCustom01" required class="form-control">
+                            <input type="text" name="nombre" id="validationCustom01" required class="form-control" onkeypress="return check(event)">
                             <div class="invalid-feedback">
                                 Ingrese un nombre valido
                             </div>
@@ -78,7 +78,7 @@
 
                         <div class="mb-4">
                             <label for="primerApellido" class="form-label">Primer Apellido:</label>
-                            <input type="text" name="primerApellido" id="validationCustom01" required class="form-control">
+                            <input type="text" name="primerApellido" id="validationCustom01" required class="form-control" onkeypress="return check(event)">
                             <div class="invalid-feedback">
                                 Ingrese un apellido valido
                             </div>
@@ -86,7 +86,7 @@
 
                         <div class="mb-4">
                             <label for="segundoApellido" class="form-label">Segundo Apellido:</label>
-                            <input type="text" name="segundoApellido" id="validationCustom01" required class="form-control">
+                            <input type="text" name="segundoApellido" id="validationCustom01" required class="form-control" onkeypress="return check(event)">
                             <div class="invalid-feedback">
                                 Ingrese un apellido valido
                             </div>
@@ -128,6 +128,36 @@
                 </div>
             </div>
         </div>
+        <script src="/js/validacionCaracteres.js"></script>
+
+        <script>
+                                function check(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patrón de entrada, en este caso solo acepta numeros y letras
+                                    patron = /[A-Za-z]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+                                function checka(e) {
+                                    tecla = (document.all) ? e.keyCode : e.which;
+
+                                    //Tecla de retroceso para borrar, siempre la permite
+                                    if (tecla == 8) {
+                                        return true;
+                                    }
+
+                                    // Patrón de entrada, en este caso solo acepta numeros y letras
+                                    patron = /[A-Za-z0-9]/;
+                                    tecla_final = String.fromCharCode(tecla);
+                                    return patron.test(tecla_final);
+                                }
+        </script>
 
         <script>
             // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -150,7 +180,6 @@
                 });
             })();
         </script>
-
 
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
