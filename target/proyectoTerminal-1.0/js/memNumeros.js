@@ -51,7 +51,7 @@ function contarTiempo(){
 function bloquearTarjetas(){
     for(let i=0; i<=19; ++i){
         let tarjetaBloqueada = document.getElementById(i);
-        tarjetaBloqueada.innerHTML = `<img src="./img/numeros/${numeros[i]}.png" alt="">`;
+        tarjetaBloqueada.innerHTML = `<img src="../../img/numeros/${numeros[i]}.png" alt="">`;
         tarjetaBloqueada.disabled = true;
     }
 }

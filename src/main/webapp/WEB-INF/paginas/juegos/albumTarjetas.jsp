@@ -29,7 +29,7 @@
           <div class="card shadow-sm">
               <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_portadaJuegos/sonidoAlbabeto.png?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
-                    <p class="card-text"> Memorama para descubrir el alfabeto nahuatl </p>
+                    <p class="card-text"> Sonidos del alfabeto </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
@@ -81,7 +81,7 @@
           <div class="card shadow-sm">
             <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_portadaJuegos/sonidoNumeros.jpg?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
-                    <p class="card-text"> Memorama para descubrir los numeros en nahuatl </p>
+                    <p class="card-text"> Sonidos de los numeros en nahuatl </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
@@ -132,7 +132,7 @@
           <div class="card shadow-sm">
             <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_portadaJuegos/preguntadosPronombresP.png?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
-                    <p class="card-text"> Carrusel sobre los pronombres personales </p>
+                    <p class="card-text"> Preguntados (Pronombres personales) </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
