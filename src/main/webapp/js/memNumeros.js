@@ -72,7 +72,7 @@ if(tarjetasDestapadas == 1){
     //mostrar el primer numero
     tarjeta1 = document.getElementById(id);
     primerResultado = numeros[id];
-    tarjeta1.innerHTML =`<img src="./img/numeros/${primerResultado}.png" alt="">`;
+    tarjeta1.innerHTML =`<img src="../../img/numeros/${primerResultado}.png" alt="">`;
     
 
     //deshabilitar el primero boton
@@ -81,7 +81,7 @@ if(tarjetasDestapadas == 1){
     //mostrar segundo numero
     tarjeta2 = document.getElementById(id);
     segundoResultado = numeros[id];
-    tarjeta2.innerHTML = `<img src="./img/numeros/${segundoResultado}.png" alt="">`;
+    tarjeta2.innerHTML = `<img src="../../img/numeros/${segundoResultado}.png" alt="">`;
 
     //deshabilitar noton2
     tarjeta2.disabled = true;
