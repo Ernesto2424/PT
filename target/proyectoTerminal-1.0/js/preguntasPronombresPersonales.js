@@ -85,8 +85,12 @@ function terminarJuego(){
     document.getElementById("pantalla-final").style.display = "block";
     //agreamos los resultados
     document.getElementById("numCorrectas").innerHTML = cantidadAcertadas;
-    document.getElementById("correctas").innerHTML = cantidadAcertadas;
     document.getElementById("numIncorrectas").innerHTML = banderas.length - cantidadAcertadas;
+
+    //mandamos a los inputs
+    document.getElementById("correctas").value=cantidadAcertadas;
+    document.getElementById("incorrectas").value=banderas.length - cantidadAcertadas;
+
 }
 
 function volverAlInicio(){
@@ -95,3 +99,4 @@ function volverAlInicio(){
     document.getElementById("pantalla-inicial").style.display = "block";
     document.getElementById("pantalla-juego").style.display = "none";
 }
+
