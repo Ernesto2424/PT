@@ -87,10 +87,16 @@ function terminarJuego(){
     document.getElementById("numCorrectas").innerHTML = cantidadAcertadas;
     document.getElementById("numIncorrectas").innerHTML = banderas.length - cantidadAcertadas;
 
-    //mandamos a los inputs
-    document.getElementById("correctas").value=cantidadAcertadas;
-    document.getElementById("incorrectas").value=banderas.length - cantidadAcertadas;
+}
 
+function mandar(){
+    //obtener los valores de los span
+    let buenas = document.getElementById("numCorrectas");
+    let malas = document.getElementById("numIncorrectas");
+
+    document.getElementById("buenas").value = cantidadAcertadas;
+    document.getElementById("malas").value = banderas.length - cantidadAcertadas;
+    
 }
 
 function volverAlInicio(){

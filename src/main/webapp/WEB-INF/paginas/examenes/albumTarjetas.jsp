@@ -14,7 +14,7 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
-                    <a href="${pageContext.request.contextPath}/examenes/evaluaPronombres.jsp" class="btn  btn-primary" target="_blank">Jugar</a>
+                    <a href="${pageContext.request.contextPath}/examenes/pronombres/ev1.jsp" class="btn  btn-primary" target="_blank">Jugar</a>
                   
                 </div>
                 <small class="text-body-secondary">Pronombres</small>
