@@ -62,7 +62,8 @@
 
                         <div class="mb-4">
                             <label for="matricula" class="form-label">Matricula ó CURP:</label>
-                            <input type="text" name="matricula" id="validationCustom01" required="true" class="form-control"  onkeypress="return checka(event)">
+                            <input type="text" name="matricula" id="validationCustom01" required="true" class="form-control"  onkeypress="return checka(event)"
+                            maxlength="18">
                             <div class="invalid-feedback">
                                 Ingrese un valor valido
                             </div>
