@@ -1,6 +1,7 @@
 package datos;
 
 import domain.Recurso;
+import java.util.List;
 
 /**
  *
@@ -15,6 +16,6 @@ public interface RecursoDao {
     Recurso selectById(Recurso recurso);
 
     int update(Recurso recurso);
-
     
+    List<Recurso> select();
 }

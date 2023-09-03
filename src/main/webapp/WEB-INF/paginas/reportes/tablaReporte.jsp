@@ -23,18 +23,10 @@
                                 </thead>
 
                                 <tbody>
-                                    <!-- iterrar cada elemento de la lista -->
+                                    <!-- iterrar cada elemento de la lista 
 
-                                    <c:forEach var="inv" items="${stock}">
-                                        <tr>
-                                            <td>${inv.producto.codigo}</td>
-                                            <td>${inv.producto.descripcion}</td>
-                                            <td>${inv.cantidad}</td>
-                                            <td><fmt:formatNumber value="${inv.producto.costoUnitario}" type="currency"></fmt:formatNumber></td>
-                                            <td><fmt:formatNumber value="${inv.actual}" type="currency"></fmt:formatNumber></td>
-                                            </tr>
-                                    </c:forEach>
-
+                                    
+-->
                                 </tbody>
 
                             </table>

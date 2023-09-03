@@ -86,6 +86,9 @@ function terminarJuego(){
     //agreamos los resultados
     document.getElementById("numCorrectas").innerHTML = cantidadAcertadas;
     document.getElementById("numIncorrectas").innerHTML = banderas.length - cantidadAcertadas;
+    
+     document.getElementById("buenas").value = cantidadAcertadas;
+    document.getElementById("malas").value = banderas.length - cantidadAcertadas;
 
 }
 
@@ -96,6 +99,8 @@ function mandar(){
 
     document.getElementById("buenas").value = cantidadAcertadas;
     document.getElementById("malas").value = banderas.length - cantidadAcertadas;
+    
+    setTimeout(window.close(),8000);
     
 }
 

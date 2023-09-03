@@ -301,8 +301,8 @@ public class controller extends HttpServlet {
     protected void evaluar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //obtener los datos del test
-        int numCorrectas = Integer.parseInt(request.getParameter("numCorrectas"));
-        int numIncorrectas = Integer.parseInt(request.getParameter("numIncorrectas"));
+        int numCorrectas = Integer.parseInt(request.getParameter("buenas"));
+        int numIncorrectas = Integer.parseInt(request.getParameter("malas"));
 
         System.out.println("numCorrectas = " + numCorrectas);
         System.out.println("numIncorrectas = " + numIncorrectas);
@@ -324,7 +324,7 @@ public class controller extends HttpServlet {
                 case "signUp":
                     this.signUp(request, response);
                     break;
-                case "evaluar":
+                case "evalua":
                     this.evaluar(request, response);
                     break;
                 default:
