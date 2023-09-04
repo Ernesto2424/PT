@@ -8,10 +8,15 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import datos.AlumnoDao;
 import datos.AlumnoDaoImp;
+import datos.EvaluacionDao;
+import datos.EvaluacionDaoImp;
+import datos.RecursoDao;
+import datos.RecursoDaoImp;
 import datos.UsuarioDao;
 import datos.UsuarioDaoImp;
 import domain.Alumno;
 import domain.Evaluacion;
+import domain.Recurso;
 import domain.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
@@ -222,6 +227,16 @@ public class controller extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected List<Recurso> getRecursos() {
+
+        List<Recurso> recursos;
+        RecursoDao recurso = new RecursoDaoImp();
+        recursos = recurso.select();
+
+        return recursos;
+
+    }
+
     protected void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -252,6 +267,9 @@ public class controller extends HttpServlet {
                 sesion.setAttribute("alumno", alumnoEncontrado);
                 sesion.setAttribute("usuario", "correcto");
                 System.out.println(alumnoEncontrado.toString());
+                
+                //compartiendo los recursos
+                sesion.setAttribute("recursos", this.getRecursos());
 
             } else {
                 sesion.setAttribute("usuario", null);
@@ -303,10 +321,21 @@ public class controller extends HttpServlet {
         //obtener los datos del test
         int numCorrectas = Integer.parseInt(request.getParameter("buenas"));
         int numIncorrectas = Integer.parseInt(request.getParameter("malas"));
-
-        System.out.println("numCorrectas = " + numCorrectas);
-        System.out.println("numIncorrectas = " + numIncorrectas);
-
+        int idRecurso = Integer.parseInt(request.getParameter("idRecurso"));
+        String idAlumno = request.getParameter("idAlumno");
+        
+        //crear el objeto evaluacion
+        Evaluacion evaluacion = new Evaluacion(new Recurso(idRecurso), new Alumno(idAlumno), numCorrectas);
+        System.out.println("evaluacion = " + evaluacion);
+        
+        //persistimos el objeto evalucion en la base de datos
+        EvaluacionDao evaluacioDao = new EvaluacionDaoImp();
+        int ins = evaluacioDao.insert(evaluacion);
+        System.out.println("ins = " + ins);
+        
+        //redireccionamos a la pagina de examnes
+        //this.examenes(request, response);
+        response.sendRedirect("index.jsp");
     }
 
     @Override

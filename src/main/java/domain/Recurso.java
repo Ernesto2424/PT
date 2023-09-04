@@ -13,6 +13,10 @@ public class Recurso {
 
     public Recurso() {}
 
+    public Recurso(int id) {
+        this.id = id;
+    }
+    
     public Recurso(int id, String nombre, String descripcion, String tipo) {
         this.id = id;
         this.nombre = nombre;

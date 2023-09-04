@@ -10,11 +10,11 @@
           <div class="card shadow-sm">
               <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_portadaJuegos/memAlfabeto.jpg?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
-                    <p class="card-text"> Evaluacion para los pronombres </p>
+                    <p class="card-text">${recursos[5].nombre} </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
-                    <a href="${pageContext.request.contextPath}/examenes/pronombres/ev1.jsp" class="btn  btn-primary" target="_blank">Jugar</a>
+                    <a href="${pageContext.request.contextPath}/examenes/pronombres/ev1.jsp" class="btn  btn-primary">Jugar</a>
                   
                 </div>
                 <small class="text-body-secondary">Pronombres</small>

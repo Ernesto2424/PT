@@ -38,12 +38,14 @@
         <div id="pantalla-final">
             <h2>CORRECTAS: <span id="numCorrectas">3</span></h2>
             <h2>INCORRECTAS: <span id="numIncorrectas">2</span></h2>
-            <button class="btn" onclick="volverAlInicio()">VOLVER AL INICIO</button>
+            <!--<button class="btn" onclick="volverAlInicio()">VOLVER AL INICIO</button>-->
 
             <form action="${pageContext.request.contextPath}/controller?at=evalua" method="POST">
                 <input type="hidden" name="buenas" id="buenas">
                 <input type="hidden" name="malas" id="malas">
-                <button>Enviar Resultado</button>
+                <input type="hidden" name="idRecurso" id="idRecurso" value="${recursos[5].id}">
+                <input type="hidden" name="idAlumno" id="idAlumno" value="${alumno.matricula}">
+                <button class="btn">Enviar Resultado</button>
             </form>
 
 

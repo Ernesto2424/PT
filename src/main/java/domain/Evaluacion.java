@@ -27,6 +27,12 @@ public class Evaluacion {
         this.calificacion = calificacion;
     }
 
+    public Evaluacion(Recurso recurso, Alumno alumno, int calificacion) {
+        this.recurso = recurso;
+        this.alumno = alumno;
+        this.calificacion = calificacion;
+    }
+    
     public int getId() {
         return id;
     }
