@@ -101,6 +101,11 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("examenes.jsp").forward(request, response);
     }
+    
+     private void reportes(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("reportes.jsp").forward(request, response);
+    }
 
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -206,6 +211,10 @@ public class controller extends HttpServlet {
 
                 case "rtest":
                     this.examenes(request, response);
+                    break;
+                    
+                case "report":
+                    this.reportes(request, response);
                     break;
 
                 case "cerrarSesion":

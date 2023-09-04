@@ -18,7 +18,7 @@
 
         <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"/>
         <jsp:include page="WEB-INF/paginas/reportes/cabeceroReporte.jsp"/>
-        <jsp:include page="WEB-INF/paginas/reportes/tablaReporte.jsp"/>
+       <jsp:include page="WEB-INF/paginas/reportes/tablaReporte.jsp"/>
         <jsp:include page="WEB-INF/paginas/comunes/footer.jsp"/>
 
 
