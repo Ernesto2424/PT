@@ -15,6 +15,7 @@ public class EvaluacionDaoImp implements EvaluacionDao {
     private static final String SQL_INSERT = "INSERT INTO evaluacion (id_recurso,id_alumno,calificacion) VALUES (?,?,?)";
     private static final String SQL_SELECTBYID = "SELECT * FROM evaluacion WHERE id = ?";
     private static final String SQL_SELECT = "SELECT * FROM evaluacion";
+    private static final String SQL_SELECT_BY_DATE = "select * from evaluacion where id_alumno = \"2193041595\" AND fecha BETWEEN \"2023-10-01\" AND \"2023-12-01\";";
 
     @Override
     public int insert(Evaluacion evaluacion) {

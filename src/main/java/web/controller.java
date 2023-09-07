@@ -343,6 +343,9 @@ public class controller extends HttpServlet {
         int idRecurso = Integer.parseInt(request.getParameter("idRecurso"));
         String idAlumno = request.getParameter("idAlumno");
         
+        String fecha = request.getParameter("fecha");
+        System.out.println("fecha = " + fecha);
+        
         //crear el objeto evaluacion
         Evaluacion evaluacion = new Evaluacion(new Recurso(idRecurso), new Alumno(idAlumno), numCorrectas);
         System.out.println("evaluacion = " + evaluacion);
