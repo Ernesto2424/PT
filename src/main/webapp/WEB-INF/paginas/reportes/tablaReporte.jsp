@@ -19,12 +19,16 @@
                                     </tr>
                                 </thead>
 
-                                <tbody>
-                                    <!-- iterrar cada elemento de la lista 
-
-                                    
--->
-                                </tbody>
+                                    <tbody>
+                                        <!-- iterrar cada elemento de la lista  -->
+                                        <c:forEach var="eva" items="${evaluaciones}">
+                                    <tr>
+                                        <td>${eva.id}</td>
+                                        <td>${eva.recurso.nombre}</td>
+                                        <td>${eva.recurso.descripcion}</td>
+                                        <td>${eva.calificacion}</td>
+                                    </tr>
+                                    </tbody>
 
                             </table>
                         </div>

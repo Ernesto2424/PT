@@ -245,6 +245,15 @@ public class controller extends HttpServlet {
         return recursos;
 
     }
+    
+    protected List<Evaluacion> getEvaluaciones() {
+
+        List<Evaluacion> evaluaciones;
+        EvaluacionDao ev = new EvaluacionDaoImp();
+        evaluaciones = ev.select();
+        return evaluaciones;
+
+    }
 
     protected void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -277,8 +286,9 @@ public class controller extends HttpServlet {
                 sesion.setAttribute("usuario", "correcto");
                 System.out.println(alumnoEncontrado.toString());
                 
-                //compartiendo los recursos
+                //compartiendo los recursos y evaluaciones del alumno
                 sesion.setAttribute("recursos", this.getRecursos());
+                sesion.setAttribute("evaluaciones", this.getEvaluaciones());
 
             } else {
                 sesion.setAttribute("usuario", null);
