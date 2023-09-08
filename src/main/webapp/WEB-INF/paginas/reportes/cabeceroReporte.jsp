@@ -27,15 +27,15 @@
   </div>
   <div class="col-md-6">
       <label class="form-label h3 blockquote">De:</label>
-    <input type="date" name="fechaI" id="fechaI">
+      <input type="date" name="fechaI" id="fechaI" required="true">
   </div>
     <div class="col-md-6">
         <label class="form-label h3 blockquote">Hasta:</label>
-    <input type="date" name="fechaF" id="fechaF">
+    <input type="date" name="fechaF" id="fechaF" required="true">
   </div>  
   <input type="hidden" name="matricula" value="${alumno.matricula}">
   <div class="col-12">
-    <button type="submit" class="btn btn-primary">Generar Reporte</button>
+      <input type="submit" class="btn btn-primary" value="Generar Reporte">
   </div>
 </form>
     </div>

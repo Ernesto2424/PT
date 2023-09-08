@@ -52,7 +52,7 @@ public class RecursoDaoImp implements RecursoDao {
 
     @Override
     public Recurso selectById(Recurso recurso) {
-        Recurso recursoEncontrado = null;
+        Recurso recursoBuscado = null;
         Connection cn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -67,17 +67,17 @@ public class RecursoDaoImp implements RecursoDao {
                 String nombre = rs.getString("nombre");
                 String descripcion = rs.getString("descripcion");
                 String tipo = rs.getString("tipo");
-                recursoEncontrado = new Recurso(id, nombre, descripcion, tipo);
+                recursoBuscado = new Recurso(id, nombre, descripcion, tipo);
             }
-        } catch (ClassNotFoundException | SQLException e) {
-            // TODO Auto-generated catch block
+
+        } catch (Exception e) {
             e.printStackTrace(System.out);
-        }finally{
+        } finally {
             Conexion.close(rs);
             Conexion.close(pst);
             Conexion.close(cn);
         }
-        return recursoEncontrado;
+        return recursoBuscado;
     }
 
     @Override

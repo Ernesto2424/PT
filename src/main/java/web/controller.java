@@ -172,24 +172,13 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         //obtenemos los parametros (fechas de evaluaciones)
         String matricula = request.getParameter("matricula");
+        System.out.println("matricula = " + matricula);
         String fechaI = request.getParameter("fechaI");
+        System.out.println("fechaI = " + fechaI);
         String fechaF = request.getParameter("fechaF");
-        
-        //crear la lista donde se cargaran las evaluaicones
-        List<Evaluacion> evaluacionesDate = new ArrayList<>();
-        
-        //crear objeto alumnoo
-        Alumno alumno = new Alumno(matricula);
-        
-        //obtener la informacion desde la base de datos
-        EvaluacionDao eva = new EvaluacionDaoImp();
-        evaluacionesDate = eva.selectByDate(alumno,fechaI, fechaF);
+        System.out.println("fechaF = " + fechaF);
         
         
-        request.setAttribute("evaluacionesDate", evaluacionesDate);
-        
-        //redireccionamos
-        this.reportes(request, response);
 
     }
 

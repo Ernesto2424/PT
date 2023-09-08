@@ -1,4 +1,4 @@
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <section id="evaluaciones">
 
     <div class="container">
@@ -21,13 +21,14 @@
 
                                     <tbody>
                                         <!-- iterrar cada elemento de la lista  -->
-                                        <c:forEach var="eva" items="${evaluaciones}">
+                                        <c:forEach var="eva" items="${recursos}">
                                     <tr>
                                         <td>${eva.id}</td>
-                                        <td>${eva.recurso.nombre}</td>
-                                        <td>${eva.recurso.descripcion}</td>
-                                        <td>${eva.calificacion}</td>
+                                        <td>${eva.nombre}</td>
+                                        <td>${eva.descripcion}</td>
+                                        <td>${eva.tipo}</td>
                                     </tr>
+                                     </c:forEach>
                                     </tbody>
 
                             </table>
