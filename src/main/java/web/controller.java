@@ -177,8 +177,6 @@ public class controller extends HttpServlet {
         System.out.println("fechaI = " + fechaI);
         String fechaF = request.getParameter("fechaF");
         System.out.println("fechaF = " + fechaF);
-        
-        
 
     }
 
@@ -230,10 +228,8 @@ public class controller extends HttpServlet {
                 case "report":
                     this.reportes(request, response);
                     break;
-                    
-                case "evDate":
-                    this.getEvaluacionesByDate(request, response);
-                    break;
+
+               
 
                 case "cerrarSesion":
                     this.cerrarSesion(request, response);
@@ -378,6 +374,28 @@ public class controller extends HttpServlet {
         response.sendRedirect("index.jsp");
     }
 
+    protected void evaluacionesFecha(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String matricula = request.getParameter("matricula");
+        System.out.println("matricula = " + matricula);
+        String fechaI = request.getParameter("fechaI");
+        System.out.println("fechaI = " + fechaI);
+        String fechaF = request.getParameter("fechaF");
+        System.out.println("fechaF = " + fechaF);
+        
+        Alumno al = new Alumno(matricula);
+        List<Evaluacion> evaluaciones;
+        
+        EvaluacionDao evalua = new EvaluacionDaoImp();
+        evaluaciones = evalua.selectByDate(al, fechaI, fechaF);
+        
+        request.setAttribute("evaluaFecha", evaluaciones);
+        
+        this.reportes(request, response);
+
+    }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -395,7 +413,10 @@ public class controller extends HttpServlet {
                     break;
                 case "evalua":
                     this.evaluar(request, response);
-                    break;
+                    break;       
+                case "evDate":
+                    this.evaluacionesFecha(request, response);
+                    break;    
                 default:
                     throw new AssertionError();
             }

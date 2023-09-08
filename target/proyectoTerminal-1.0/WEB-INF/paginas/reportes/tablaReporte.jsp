@@ -21,12 +21,12 @@
 
                                     <tbody>
                                         <!-- iterrar cada elemento de la lista  -->
-                                        <c:forEach var="eva" items="${recursos}">
+                                        <c:forEach var="eva" items="${evaluaFecha}">
                                     <tr>
                                         <td>${eva.id}</td>
-                                        <td>${eva.nombre}</td>
-                                        <td>${eva.descripcion}</td>
-                                        <td>${eva.tipo}</td>
+                                        <td>${eva.recurso.nombre}</td>
+                                        <td>${eva.recurso.descripcion}</td>
+                                        <td>${eva.calificacion}</td>
                                     </tr>
                                      </c:forEach>
                                     </tbody>

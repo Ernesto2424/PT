@@ -12,12 +12,12 @@
 <br>
 <div class="container-md">
     
-    <form class="row g-3" action="${pageContext.request.contextPath}/controller?at=evDate">
+    <form class="row g-3" action="${pageContext.request.contextPath}/controller?at=evDate" method="POST">
   <div class="col-md-11">
       <h1 class="display-6 text-center">REPORTE #1</h1>
   </div>
   <div class="col-md-11">
-      <h3 id="nombre" class="h3 blockquote ">${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido}</h3>
+      <h3 id="nombre" class="h3 blockquote ">Alumno: ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido}</h3>
   </div>
   <div class="col-md-6">
     <h3 id="grado" class="h3 blockquote">Grupo: ${alumno.grupo}</h3>
@@ -35,7 +35,7 @@
   </div>  
   <input type="hidden" name="matricula" value="${alumno.matricula}">
   <div class="col-12">
-      <input type="submit" class="btn btn-primary" value="Generar Reporte">
+      <button class="btn btn-primary" type="submit" style="border-radius: 4px">Generar Reporte</button>
   </div>
 </form>
     </div>
