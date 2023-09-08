@@ -20,4 +20,6 @@ public interface EvaluacionDao {
 
     List<Evaluacion> select();
 
+    List<Evaluacion> selectByDate(String fechaI, String fechaF);
+
 }

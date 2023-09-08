@@ -46,12 +46,38 @@ public class RecursoDaoImp implements RecursoDao {
 
     @Override
     public int delete(Recurso recurso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Recurso selectById(Recurso recurso) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Recurso recursoEncontrado = null;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            cn = Conexion.getConnection();
+            pst = cn.prepareStatement(SQL_SELECTBYID);
+            pst.setInt(1, recurso.getId());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String nombre = rs.getString("nombre");
+                String descripcion = rs.getString("descripcion");
+                String tipo = rs.getString("tipo");
+                recursoEncontrado = new Recurso(id, nombre, descripcion, tipo);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace(System.out);
+        }finally{
+            Conexion.close(rs);
+            Conexion.close(pst);
+            Conexion.close(cn);
+        }
+        return recursoEncontrado;
     }
 
     @Override

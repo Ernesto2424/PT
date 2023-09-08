@@ -15,7 +15,7 @@ public class EvaluacionDaoImp implements EvaluacionDao {
     private static final String SQL_INSERT = "INSERT INTO evaluacion (id_recurso,id_alumno,calificacion) VALUES (?,?,?)";
     private static final String SQL_SELECTBYID = "SELECT * FROM evaluacion WHERE id = ?";
     private static final String SQL_SELECT = "SELECT * FROM evaluacion";
-    private static final String SQL_SELECT_BY_DATE = "select * from evaluacion where id_alumno = \"2193041595\" AND fecha BETWEEN \"2023-10-01\" AND \"2023-12-01\";";
+    private static final String SQL_SELECT_BY_DATE = "select * from evaluacion where id_alumno = ? AND fecha BETWEEN ? AND ?";
 
     @Override
     public int insert(Evaluacion evaluacion) {
@@ -43,12 +43,13 @@ public class EvaluacionDaoImp implements EvaluacionDao {
 
     @Override
     public int delete(Evaluacion evaluacion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public Evaluacion selectById(Evaluacion evaluacion) {
-        
+
         Evaluacion evaluacionBuscada = null;
         Connection cn = null;
         PreparedStatement pst = null;
@@ -60,8 +61,8 @@ public class EvaluacionDaoImp implements EvaluacionDao {
             pst.setInt(1, evaluacion.getId());
             rs = pst.executeQuery();
             while (rs.next()) {
-                //pendiente a que se debe buscar el nombre del recurso mediante el id 
-                //pero aun no tenemos la clase de RecursoDaoImp
+                // pendiente a que se debe buscar el nombre del recurso mediante el id
+                // pero aun no tenemos la clase de RecursoDaoImp
             }
 
         } catch (Exception e) {
@@ -75,13 +76,11 @@ public class EvaluacionDaoImp implements EvaluacionDao {
 
     }
 
-    
-
     @Override
     public List<Evaluacion> select() {
-        
+
         List<Evaluacion> evaluaciones = new ArrayList();
-         Evaluacion evaluacionBuscada = null;
+        Evaluacion evaluacionBuscada = null;
         Connection cn = null;
         PreparedStatement pst = null;
         ResultSet rs = null;
@@ -95,7 +94,8 @@ public class EvaluacionDaoImp implements EvaluacionDao {
                 int idRecurso = rs.getInt("id_recurso");
                 String matricula = rs.getString("id_alumno");
                 int calificacion = rs.getInt("calificacion");
-                evaluacionBuscada = new Evaluacion(id, new Recurso(),calificacion); //agregar datos completos del recruso
+                evaluacionBuscada = new Evaluacion(id, new Recurso(), calificacion); // agregar datos completos del
+                                                                                     // recruso
                 evaluaciones.add(evaluacionBuscada);
             }
 
@@ -111,7 +111,44 @@ public class EvaluacionDaoImp implements EvaluacionDao {
 
     @Override
     public int update(Evaluacion evaluacion) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from
+                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public List<Evaluacion> selectByDate(String fechaI, String fechaF) {
+
+        List<Evaluacion> evaluaciones = new ArrayList();
+        Evaluacion evaluacionBuscada = null;
+        Connection cn = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            cn = Conexion.getConnection();
+            pst = cn.prepareStatement(SQL_SELECT_BY_DATE);
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                int idRecurso = rs.getInt("id_recurso");
+                int calificacion = rs.getInt("calificacion");
+                RecursoDao rec = new RecursoDaoImp();
+                Recurso recurso = rec.selectById(new Recurso(idRecurso));
+                
+                evaluacionBuscada = new Evaluacion(id, new Recurso(recurso.getId(), recurso.getNombre(), recurso.getDescripcion(), recurso.getTipo()), calificacion); // agregar datos completos del
+                                                                                     // recruso
+                evaluaciones.add(evaluacionBuscada);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        } finally {
+            Conexion.close(rs);
+            Conexion.close(pst);
+            Conexion.close(cn);
+        }
+        return evaluaciones;
+
     }
 
 }
