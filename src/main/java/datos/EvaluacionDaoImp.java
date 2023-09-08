@@ -1,7 +1,6 @@
 package datos;
 
-import domain.Evaluacion;
-import domain.Recurso;
+import domain.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +43,7 @@ public class EvaluacionDaoImp implements EvaluacionDao {
     @Override
     public int delete(Evaluacion evaluacion) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -95,7 +94,7 @@ public class EvaluacionDaoImp implements EvaluacionDao {
                 String matricula = rs.getString("id_alumno");
                 int calificacion = rs.getInt("calificacion");
                 evaluacionBuscada = new Evaluacion(id, new Recurso(), calificacion); // agregar datos completos del
-                                                                                     // recruso
+                // recruso
                 evaluaciones.add(evaluacionBuscada);
             }
 
@@ -112,11 +111,11 @@ public class EvaluacionDaoImp implements EvaluacionDao {
     @Override
     public int update(Evaluacion evaluacion) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from
-                                                                       // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public List<Evaluacion> selectByDate(String fechaI, String fechaF) {
+    public List<Evaluacion> selectByDate(Alumno alumno, String fechaI, String fechaF) {
 
         List<Evaluacion> evaluaciones = new ArrayList();
         Evaluacion evaluacionBuscada = null;
@@ -127,6 +126,9 @@ public class EvaluacionDaoImp implements EvaluacionDao {
         try {
             cn = Conexion.getConnection();
             pst = cn.prepareStatement(SQL_SELECT_BY_DATE);
+            pst.setString(1, alumno.getMatricula());
+            pst.setString(2, fechaI);
+            pst.setString(3, fechaF);
             rs = pst.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
@@ -134,9 +136,9 @@ public class EvaluacionDaoImp implements EvaluacionDao {
                 int calificacion = rs.getInt("calificacion");
                 RecursoDao rec = new RecursoDaoImp();
                 Recurso recurso = rec.selectById(new Recurso(idRecurso));
-                
+
                 evaluacionBuscada = new Evaluacion(id, new Recurso(recurso.getId(), recurso.getNombre(), recurso.getDescripcion(), recurso.getTipo()), calificacion); // agregar datos completos del
-                                                                                     // recruso
+                // recruso
                 evaluaciones.add(evaluacionBuscada);
             }
 

@@ -1,7 +1,7 @@
 
 package datos;
 
-import domain.Evaluacion;
+import domain.*;
 import java.util.List;
 
 /**
@@ -20,6 +20,6 @@ public interface EvaluacionDao {
 
     List<Evaluacion> select();
 
-    List<Evaluacion> selectByDate(String fechaI, String fechaF);
+    List<Evaluacion> selectByDate(Alumno alumno, String fechaI, String fechaF);
 
 }

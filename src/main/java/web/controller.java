@@ -101,8 +101,8 @@ public class controller extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("examenes.jsp").forward(request, response);
     }
-    
-     private void reportes(HttpServletRequest request, HttpServletResponse response)
+
+    private void reportes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("reportes.jsp").forward(request, response);
     }
@@ -168,6 +168,31 @@ public class controller extends HttpServlet {
 
     }
 
+    private void getEvaluacionesByDate(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        //obtenemos los parametros (fechas de evaluaciones)
+        String matricula = request.getParameter("matricula");
+        String fechaI = request.getParameter("fechaI");
+        String fechaF = request.getParameter("fechaF");
+        
+        //crear la lista donde se cargaran las evaluaicones
+        List<Evaluacion> evaluacionesDate = new ArrayList<>();
+        
+        //crear objeto alumnoo
+        Alumno alumno = new Alumno(matricula);
+        
+        //obtener la informacion desde la base de datos
+        EvaluacionDao eva = new EvaluacionDaoImp();
+        evaluacionesDate = eva.selectByDate(alumno,fechaI, fechaF);
+        
+        
+        request.setAttribute("evaluacionesDate", evaluacionesDate);
+        
+        //redireccionamos
+        this.reportes(request, response);
+
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -212,9 +237,13 @@ public class controller extends HttpServlet {
                 case "rtest":
                     this.examenes(request, response);
                     break;
-                    
+
                 case "report":
                     this.reportes(request, response);
+                    break;
+                    
+                case "evDate":
+                    this.getEvaluacionesByDate(request, response);
                     break;
 
                 case "cerrarSesion":
@@ -245,7 +274,7 @@ public class controller extends HttpServlet {
         return recursos;
 
     }
-    
+
     protected List<Evaluacion> getEvaluaciones() {
 
         List<Evaluacion> evaluaciones;
@@ -285,7 +314,7 @@ public class controller extends HttpServlet {
                 sesion.setAttribute("alumno", alumnoEncontrado);
                 sesion.setAttribute("usuario", "correcto");
                 System.out.println(alumnoEncontrado.toString());
-                
+
                 //compartiendo los recursos y evaluaciones del alumno
                 sesion.setAttribute("recursos", this.getRecursos());
                 sesion.setAttribute("evaluaciones", this.getEvaluaciones());
@@ -342,19 +371,19 @@ public class controller extends HttpServlet {
         int numIncorrectas = Integer.parseInt(request.getParameter("malas"));
         int idRecurso = Integer.parseInt(request.getParameter("idRecurso"));
         String idAlumno = request.getParameter("idAlumno");
-        
+
         String fecha = request.getParameter("fecha");
         System.out.println("fecha = " + fecha);
-        
+
         //crear el objeto evaluacion
         Evaluacion evaluacion = new Evaluacion(new Recurso(idRecurso), new Alumno(idAlumno), numCorrectas);
         System.out.println("evaluacion = " + evaluacion);
-        
+
         //persistimos el objeto evalucion en la base de datos
         EvaluacionDao evaluacioDao = new EvaluacionDaoImp();
         int ins = evaluacioDao.insert(evaluacion);
         System.out.println("ins = " + ins);
-        
+
         //redireccionamos a la pagina de examnes
         //this.examenes(request, response);
         response.sendRedirect("index.jsp");

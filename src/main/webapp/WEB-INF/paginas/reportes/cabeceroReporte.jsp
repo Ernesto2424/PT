@@ -12,7 +12,7 @@
 <br>
 <div class="container-md">
     
-<form class="row g-3">
+    <form class="row g-3" action="${pageContext.request.contextPath}/controller?at=evDate">
   <div class="col-md-11">
       <h1 class="display-6 text-center">REPORTE #1</h1>
   </div>
@@ -27,14 +27,13 @@
   </div>
   <div class="col-md-6">
       <label class="form-label h3 blockquote">De:</label>
-    <input type="date" name="inicio" id="inicio">
+    <input type="date" name="fechaI" id="fechaI">
   </div>
     <div class="col-md-6">
         <label class="form-label h3 blockquote">Hasta:</label>
-    <input type="date" name="fin" id="fin">
+    <input type="date" name="fechaF" id="fechaF">
   </div>  
-    
-  
+  <input type="hidden" name="matricula" value="${alumno.matricula}">
   <div class="col-12">
     <button type="submit" class="btn btn-primary">Generar Reporte</button>
   </div>
