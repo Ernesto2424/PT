@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class EvaluacionDaoImp implements EvaluacionDao {
 
-    private static final String SQL_INSERT = "INSERT INTO evaluacion (id_recurso,id_alumno,calificacion) VALUES (?,?,?)";
+    private static final String SQL_INSERT = "INSERT INTO evaluacion (id_recurso,id_alumno,calificacion,fecha) VALUES (?,?,?,?)";
     private static final String SQL_SELECTBYID = "SELECT * FROM evaluacion WHERE id = ?";
     private static final String SQL_SELECT = "SELECT * FROM evaluacion";
     private static final String SQL_SELECT_BY_DATE = "select * from evaluacion where id_alumno = ? AND fecha BETWEEN ? AND ?";
@@ -28,6 +28,7 @@ public class EvaluacionDaoImp implements EvaluacionDao {
             pst.setInt(1, evaluacion.getRecurso().getId());
             pst.setString(2, evaluacion.getAlumno().getMatricula());
             pst.setInt(3, evaluacion.getCalificacion());
+            pst.setString(4, evaluacion.getFecha());
             row = pst.executeUpdate();
 
         } catch (Exception e) {
@@ -93,7 +94,8 @@ public class EvaluacionDaoImp implements EvaluacionDao {
                 int idRecurso = rs.getInt("id_recurso");
                 String matricula = rs.getString("id_alumno");
                 int calificacion = rs.getInt("calificacion");
-                evaluacionBuscada = new Evaluacion(id, new Recurso(), calificacion); // agregar datos completos del
+                String fecha = rs.getString("fecha");
+                evaluacionBuscada = new Evaluacion(id, new Recurso(), calificacion, fecha); // agregar datos completos del
                 // recruso
                 evaluaciones.add(evaluacionBuscada);
             }
@@ -134,10 +136,11 @@ public class EvaluacionDaoImp implements EvaluacionDao {
                 int id = rs.getInt("id");
                 int idRecurso = rs.getInt("id_recurso");
                 int calificacion = rs.getInt("calificacion");
+                String fecha = rs.getString("fecha");
                 RecursoDao rec = new RecursoDaoImp();
                 Recurso recurso = rec.selectById(new Recurso(idRecurso));
 
-                evaluacionBuscada = new Evaluacion(id, new Recurso(recurso.getId(), recurso.getNombre(), recurso.getDescripcion(), recurso.getTipo()), calificacion); // agregar datos completos del
+                evaluacionBuscada = new Evaluacion(id, new Recurso(recurso.getId(), recurso.getNombre(), recurso.getDescripcion(), recurso.getTipo()), calificacion, fecha); // agregar datos completos del
                 // recruso
                 evaluaciones.add(evaluacionBuscada);
             }

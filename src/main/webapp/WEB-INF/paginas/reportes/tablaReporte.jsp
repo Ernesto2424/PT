@@ -11,25 +11,27 @@
                             <table class="table table-striped">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th>ID EV</th>
                                         <th>NOMBRE</th>
                                         <th>DESCRIPCION</th>
                                         <th>RESULTADO</th>
+                                        <th>FECHA</th>
 
                                     </tr>
                                 </thead>
 
-                                    <tbody>
-                                        <!-- iterrar cada elemento de la lista  -->
-                                        <c:forEach var="eva" items="${evaluaFecha}">
-                                    <tr>
-                                        <td>${eva.id}</td>
-                                        <td>${eva.recurso.nombre}</td>
-                                        <td>${eva.recurso.descripcion}</td>
-                                        <td>${eva.calificacion}</td>
-                                    </tr>
-                                     </c:forEach>
-                                    </tbody>
+                                <tbody>
+                                    <!-- iterrar cada elemento de la lista  -->
+                                    <c:forEach var="eva" items="${evaluaFecha}">
+                                        <tr>
+
+                                            <td>${eva.recurso.nombre}</td>
+                                            <td>${eva.recurso.descripcion}</td>
+                                            <td>${eva.calificacion}</td>
+                                            <td>${eva.fecha}</td>
+
+                                        </tr>
+                                    </c:forEach>
+                                </tbody>
 
                             </table>
                         </div>

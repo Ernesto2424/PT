@@ -89,7 +89,7 @@ function terminarJuego(){
     
      document.getElementById("buenas").value = cantidadAcertadas;
     document.getElementById("malas").value = banderas.length - cantidadAcertadas;
-
+    
 }
 
 function mandar(){

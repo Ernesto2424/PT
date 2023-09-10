@@ -10,6 +10,7 @@ public class Evaluacion {
     private Recurso recurso;
     private Alumno alumno;
     private int calificacion;
+    private String fecha;
 
     public Evaluacion() {
     }
@@ -21,16 +22,18 @@ public class Evaluacion {
         this.calificacion = calificacion;
     }
 
-    public Evaluacion(int id, Recurso recurso, int calificacion) {
+    public Evaluacion(int id, Recurso recurso, int calificacion, String fecha) {
         this.id = id;
         this.recurso = recurso;
         this.calificacion = calificacion;
+        this.fecha = fecha;
     }
 
-    public Evaluacion(Recurso recurso, Alumno alumno, int calificacion) {
+    public Evaluacion(Recurso recurso, Alumno alumno, int calificacion, String fecha) {
         this.recurso = recurso;
         this.alumno = alumno;
         this.calificacion = calificacion;
+        this.fecha = fecha;
     }
     
     public int getId() {
@@ -64,6 +67,16 @@ public class Evaluacion {
     public void setCalificacion(int calificacion) {
         this.calificacion = calificacion;
     }
+
+    public String getFecha() {
+        return this.fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
 
     @Override
     public String toString() {

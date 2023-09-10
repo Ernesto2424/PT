@@ -356,12 +356,11 @@ public class controller extends HttpServlet {
         int numIncorrectas = Integer.parseInt(request.getParameter("malas"));
         int idRecurso = Integer.parseInt(request.getParameter("idRecurso"));
         String idAlumno = request.getParameter("idAlumno");
-
         String fecha = request.getParameter("fecha");
         System.out.println("fecha = " + fecha);
 
         //crear el objeto evaluacion
-        Evaluacion evaluacion = new Evaluacion(new Recurso(idRecurso), new Alumno(idAlumno), numCorrectas);
+        Evaluacion evaluacion = new Evaluacion(new Recurso(idRecurso), new Alumno(idAlumno), numCorrectas, fecha);
         System.out.println("evaluacion = " + evaluacion);
 
         //persistimos el objeto evalucion en la base de datos

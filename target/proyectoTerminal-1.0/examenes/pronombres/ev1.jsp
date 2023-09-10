@@ -45,15 +45,21 @@
                 <input type="hidden" name="malas" id="malas">
                 <input type="hidden" name="idRecurso" id="idRecurso" value="${recursos[5].id}">
                 <input type="hidden" name="idAlumno" id="idAlumno" value="${alumno.matricula}">
-                <input type="date" name="fecha">
-                <button class="btn">Enviar Resultado</button>
+                <input type="hidden" name="fecha" id="fecha">
+                <button class="btn" >Enviar Resultado</button>
             </form>
 
 
         </div>
 
 
-
+        <script>
+        var fechaActual = new Date().toISOString().slice(0, 10);
+      // Establece la fecha actual como el valor del campo de entrada
+      document.getElementById("fecha").value = fechaActual;
+      cosole.log(fechaActual);
+    </script>
+                
         <script src="../../js/preguntasPronombresPersonales.js"></script>
     </body>
 </html>
