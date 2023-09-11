@@ -18,12 +18,27 @@
 
         <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"/>
         <jsp:include page="WEB-INF/paginas/reportes/cabeceroReporte.jsp"/>
-       <jsp:include page="WEB-INF/paginas/reportes/tablaReporte.jsp"/>
+        <jsp:include page="WEB-INF/paginas/reportes/tablaReporte.jsp"/>
         <jsp:include page="WEB-INF/paginas/comunes/footer.jsp"/>
 
 
 
 
+
+
+        <script>
+            function validateDate() {
+                let fechaI = document.getElementById("fechaI").value;
+                let fechaF = document.getElementById("fechaF").value;
+
+                if (fechaI > fechaF) {
+                    alert("Ingrese una fecha posterior a la inicial");
+                    return false;
+                }
+
+                return true;
+            }
+        </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 

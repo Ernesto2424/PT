@@ -12,7 +12,7 @@
 <br>
 <div class="container-md">
     
-    <form class="row g-3" action="${pageContext.request.contextPath}/controller?at=evDate" method="POST">
+    <form class="row g-3" action="${pageContext.request.contextPath}/controller?at=evDate" method="POST" onsubmit="return validateDate()">
   <div class="col-md-11">
       <h1 class="display-6 text-center">REPORTE #1</h1>
   </div>
