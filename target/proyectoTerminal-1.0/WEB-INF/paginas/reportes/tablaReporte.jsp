@@ -34,11 +34,25 @@
                                 </tbody>
 
                             </table>
+                            
                         </div>
+                       
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <form action="${pageContext.request.contextPath}/controller?at=generatePDF" id="frameReporte" method="POST" target="_blank">
+                            <input type="hidden" name="acc" id="acc">
+                            <button class="btn btn-secondary col-md-2">Generar PDF</button>
+                            <input type="hidden" name="lista" id="lista">
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    
+
+
 </section>
 

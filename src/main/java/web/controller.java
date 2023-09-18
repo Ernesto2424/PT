@@ -43,17 +43,17 @@ import net.sf.jasperreports.engine.util.JRLoader;
  *
  * @author ernes
  */
-@WebServlet(name = "controller", urlPatterns = {"/controller"})
+@WebServlet(name = "controller", urlPatterns = { "/controller" })
 public class controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -115,62 +115,13 @@ public class controller extends HttpServlet {
             sesion.removeAttribute("usuario");
             sesion.invalidate();
         }
-        //redirigimos al inicio
+        // redirigimos al inicio
         response.sendRedirect("index.jsp");
-    }
-
-    private void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        ServletOutputStream out = response.getOutputStream();
-        try {
-            InputStream logoEmpresa = this.getServletConfig()
-                    .getServletContext()
-                    .getResourceAsStream("logo.png"),
-                    reporteAlumno = this.getServletConfig()
-                            .getServletContext()
-                            .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
-
-            if (logoEmpresa != null && reporteAlumno != null) {
-                String jsonEvalaucionAlumno = request.getParameter("lista"); //OJO
-                Gson gson = new Gson();
-                List<Evaluacion> reporteEvaluacion = new ArrayList<>();
-                List<Evaluacion> reporteEvaluacion2 = new ArrayList<>();
-
-                reporteEvaluacion.add(new Evaluacion());
-                reporteEvaluacion2 = gson.fromJson(jsonEvalaucionAlumno, new TypeToken<List<Evaluacion>>() {
-                }.getType());
-                reporteEvaluacion.addAll(reporteEvaluacion2);
-
-                JasperReport report = (JasperReport) JRLoader.loadObject(reporteAlumno);
-                JRBeanArrayDataSource ds = new JRBeanArrayDataSource(reporteEvaluacion.toArray());
-
-                Map<String, Object> parameters = new HashMap();
-                parameters.put("ds", ds);
-                parameters.put("logoEmpresa", logoEmpresa);
-                response.setContentType("application/pdf");
-                response.addHeader("Content-disposition", "inline; filename=ReporteEvaluacionAlumno.pdf");
-                JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, ds);
-                JasperExportManager.exportReportToPdfStream(jasperPrint, out);
-                out.flush();
-                out.close();
-            } else {
-                response.setContentType("text/plain");
-                out.println("no se pudo generar el reporte");
-                out.println("esto puede debrse a que la lista de datos no fue recibida o el archivo plantilla del reporte no se ha encontrado");
-                out.println("contacte a soporte");
-            }
-        } catch (Exception e) {
-            response.setContentType("text/plain");
-            out.print("ocurrió un error al intentar generar el reporte:" + e.getMessage());
-            e.printStackTrace();
-        }
-
     }
 
     private void getEvaluacionesByDate(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //obtenemos los parametros (fechas de evaluaciones)
+        // obtenemos los parametros (fechas de evaluaciones)
         String matricula = request.getParameter("matricula");
         System.out.println("matricula = " + matricula);
         String fechaI = request.getParameter("fechaI");
@@ -180,14 +131,15 @@ public class controller extends HttpServlet {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
+    // + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -229,8 +181,6 @@ public class controller extends HttpServlet {
                     this.reportes(request, response);
                     break;
 
-               
-
                 case "cerrarSesion":
                     this.cerrarSesion(request, response);
                     break;
@@ -245,10 +195,10 @@ public class controller extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request servlet request
+     * @param request  servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
+     * @throws IOException      if an I/O error occurs
      */
     protected List<Recurso> getRecursos() {
 
@@ -269,28 +219,78 @@ public class controller extends HttpServlet {
 
     }
 
+    protected void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        ServletOutputStream out = response.getOutputStream();
+        try {
+            InputStream logoEmpresa = this.getServletConfig()
+                    .getServletContext()
+                    .getResourceAsStream("logo.png"),
+                    reporteAlumno = this.getServletConfig()
+                            .getServletContext()
+                            .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
+
+            if (logoEmpresa != null && reporteAlumno != null) {
+                String jsonEvalaucionAlumno = request.getParameter("lista"); // OJO
+                Gson gson = new Gson();
+                List<Evaluacion> reporteEvaluacion = new ArrayList<>();
+                List<Evaluacion> reporteEvaluacion2 = new ArrayList<>();
+
+                reporteEvaluacion.add(new Evaluacion());
+                reporteEvaluacion2 = gson.fromJson(jsonEvalaucionAlumno, new TypeToken<List<Evaluacion>>() {
+                }.getType());
+                reporteEvaluacion.addAll(reporteEvaluacion2);
+
+                JasperReport report = (JasperReport) JRLoader.loadObject(reporteAlumno);
+                JRBeanArrayDataSource ds = new JRBeanArrayDataSource(reporteEvaluacion.toArray());
+
+                Map<String, Object> parameters = new HashMap();
+                parameters.put("ds", ds);
+                parameters.put("logoEmpresa", logoEmpresa);
+                response.setContentType("application/pdf");
+                response.addHeader("Content-disposition", "inline; filename=ReporteEvaluacionAlumno.pdf");
+                JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, ds);
+                JasperExportManager.exportReportToPdfStream(jasperPrint, out);
+                out.flush();
+                out.close();
+            } else {
+                response.setContentType("text/plain");
+                out.println("no se pudo generar el reporte");
+                out.println(
+                        "esto puede debrse a que la lista de datos no fue recibida o el archivo plantilla del reporte no se ha encontrado");
+                out.println("contacte a soporte");
+            }
+        } catch (Exception e) {
+            response.setContentType("text/plain");
+            out.print("ocurrió un error al intentar generar el reporte:" + e.getMessage());
+            e.printStackTrace();
+        }
+
+    }
+
     protected void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //obtenemos los datos del formulario
+        // obtenemos los datos del formulario
         String matricula = request.getParameter("matricula");
         String password = request.getParameter("password");
 
-        //creamos el objeto usuario
+        // creamos el objeto usuario
         Usuario usuarioObtenido = new Usuario(new Alumno(matricula), password);
         System.out.println("usuarioObtenido = " + usuarioObtenido.toString());
 
-        //obtener los datos se encuentran en la base de datos (metodo usuario by ID)
+        // obtener los datos se encuentran en la base de datos (metodo usuario by ID)
         UsuarioDao usuDao = new UsuarioDaoImp();
         Usuario usuario = usuDao.selectById(usuarioObtenido);
         System.out.println("usuario = " + usuario);
 
-        //creamos la sesion
+        // creamos la sesion
         HttpSession sesion = request.getSession();
 
-        //verificacion de los datos del usuario
+        // verificacion de los datos del usuario
         if (usuario != null) {
-            //preguntamos si la contraseña es la misma
+            // preguntamos si la contraseña es la misma
             if (password.equals(usuario.getPassword())) {
 
                 Alumno alumnoEncontrado = null;
@@ -300,7 +300,7 @@ public class controller extends HttpServlet {
                 sesion.setAttribute("usuario", "correcto");
                 System.out.println(alumnoEncontrado.toString());
 
-                //compartiendo los recursos y evaluaciones del alumno
+                // compartiendo los recursos y evaluaciones del alumno
                 sesion.setAttribute("recursos", this.getRecursos());
                 sesion.setAttribute("evaluaciones", this.getEvaluaciones());
 
@@ -320,7 +320,7 @@ public class controller extends HttpServlet {
     protected void signUp(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //obtener los datos del formulario
+        // obtener los datos del formulario
         String matricula = request.getParameter("matricula");
         String nombre = request.getParameter("nombre");
         String primerApellido = request.getParameter("primerApellido");
@@ -329,11 +329,11 @@ public class controller extends HttpServlet {
         String turno = request.getParameter("turno");
         String password = request.getParameter("password");
 
-        //creamos el objeto alumno y usuario
+        // creamos el objeto alumno y usuario
         Alumno alumno = new Alumno(matricula, nombre, primerApellido, segundoApellido, grupo, turno);
         Usuario usuario = new Usuario(2, alumno, password);
 
-        //persistimos en la base de datos al alumno y usuario
+        // persistimos en la base de datos al alumno y usuario
         AlumnoDao aluDao = new AlumnoDaoImp();
         aluDao.insert(alumno);
 
@@ -345,13 +345,13 @@ public class controller extends HttpServlet {
             msj = "se ha creado exitosamente";
         }
         request.setAttribute("mensaje", msj);
-        //this.registrar(request, response);
+        // this.registrar(request, response);
         this.login(request, response);
     }
 
     protected void evaluar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //obtener los datos del test
+        // obtener los datos del test
         int numCorrectas = Integer.parseInt(request.getParameter("buenas"));
         int numIncorrectas = Integer.parseInt(request.getParameter("malas"));
         int idRecurso = Integer.parseInt(request.getParameter("idRecurso"));
@@ -359,17 +359,17 @@ public class controller extends HttpServlet {
         String fecha = request.getParameter("fecha");
         System.out.println("fecha = " + fecha);
 
-        //crear el objeto evaluacion
+        // crear el objeto evaluacion
         Evaluacion evaluacion = new Evaluacion(new Recurso(idRecurso), new Alumno(idAlumno), numCorrectas, fecha);
         System.out.println("evaluacion = " + evaluacion);
 
-        //persistimos el objeto evalucion en la base de datos
+        // persistimos el objeto evalucion en la base de datos
         EvaluacionDao evaluacioDao = new EvaluacionDaoImp();
         int ins = evaluacioDao.insert(evaluacion);
         System.out.println("ins = " + ins);
 
-        //redireccionamos a la pagina de examnes
-        //this.examenes(request, response);
+        // redireccionamos a la pagina de examnes
+        // this.examenes(request, response);
         response.sendRedirect("index.jsp");
     }
 
@@ -382,15 +382,15 @@ public class controller extends HttpServlet {
         System.out.println("fechaI = " + fechaI);
         String fechaF = request.getParameter("fechaF");
         System.out.println("fechaF = " + fechaF);
-        
+
         Alumno al = new Alumno(matricula);
         List<Evaluacion> evaluaciones;
-        
+
         EvaluacionDao evalua = new EvaluacionDaoImp();
         evaluaciones = evalua.selectByDate(al, fechaI, fechaF);
-        
+
         request.setAttribute("evaluaFecha", evaluaciones);
-        
+
         this.reportes(request, response);
 
     }
@@ -412,10 +412,13 @@ public class controller extends HttpServlet {
                     break;
                 case "evalua":
                     this.evaluar(request, response);
-                    break;       
+                    break;
                 case "evDate":
                     this.evaluacionesFecha(request, response);
-                    break;    
+                    break;
+                case "generatePDF":
+                    this.crearReporteAlumno(request, response);
+                    break;
                 default:
                     throw new AssertionError();
             }
