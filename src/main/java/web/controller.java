@@ -226,7 +226,7 @@ public class controller extends HttpServlet {
         try {
             InputStream logoEmpresa = this.getServletConfig()
                     .getServletContext()
-                    .getResourceAsStream("logo.png"),
+                    .getResourceAsStream("reportes/img/logo.png"),
                     reporteAlumno = this.getServletConfig()
                             .getServletContext()
                             .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
@@ -416,7 +416,7 @@ public class controller extends HttpServlet {
                 case "evDate":
                     this.evaluacionesFecha(request, response);
                     break;
-                case "generatePDF":
+                case "crearReporteAlumno":
                     this.crearReporteAlumno(request, response);
                     break;
                 default:

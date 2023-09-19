@@ -7,6 +7,12 @@
                 <div>
                     <div class="card">
                         <div class="card-header">
+                            <div class="form-group">
+                                <form action="../controller" id="frameReporte" method="POST" target="_blank">
+                                    <input type="hidden" name="at" id="at">
+                                    <button class="btn btn-secondary col-md-2" onclick="reporte('crearReporteAlumno')">Generar PDF</button>
+                                    <input type="hidden" name="lista" id="lista">
+                                </form>
                             <h4>EVALUACIONES (TEST)</h4>
                             <table class="table table-striped">
                                 <thead class="thead-dark">
@@ -39,12 +45,7 @@
                        
                     </div>
                     <br>
-                    <div class="form-group">
-                        <form action="${pageContext.request.contextPath}/controller?at=generatePDF" id="frameReporte" method="POST" target="_blank">
-                            <input type="hidden" name="acc" id="acc">
-                            <button class="btn btn-secondary col-md-2">Generar PDF</button>
-                            <input type="hidden" name="lista" id="lista">
-                        </form>
+                    
                     </div>
                 </div>
             </div>
