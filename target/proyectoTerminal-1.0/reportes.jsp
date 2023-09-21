@@ -47,8 +47,18 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       }
 
       function reporte(at) {
-        $.get("../controller?at=evDate");
-      }
+        $.get('../proyectoTerminal/controller?at=evDate', function (r) {
+          if(r){
+            $('#at').val(at);
+            $('#lista').val(JSON.stringify(r));
+            $('#frameReporte').submit();
+          }else{
+            alert('no se pudo generar el reporte: '+r);
+          }
+        });
+          
+        }
+      
     </script>
 
     <script

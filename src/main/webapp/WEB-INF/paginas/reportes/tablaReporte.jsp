@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-header">
                             <div class="form-group">
-                                <form action="../controller" id="frameReporte" method="POST" target="_blank">
+                                <form action="${pageContext.request.contextPath}/controller?at=crearReporteAlumno" id="frameReporte" method="POST" target="_blank">
                                     <input type="hidden" name="at" id="at">
                                     <button class="btn btn-secondary col-md-2" onclick="reporte('crearReporteAlumno')">Generar PDF</button>
                                     <input type="hidden" name="lista" id="lista">

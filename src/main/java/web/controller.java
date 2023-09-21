@@ -43,22 +43,22 @@ import net.sf.jasperreports.engine.util.JRLoader;
  *
  * @author ernes
  */
-@WebServlet(name = "controller", urlPatterns = { "/controller" })
+@WebServlet(name = "controller", urlPatterns = {"/controller"})
 public class controller extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -136,10 +136,10 @@ public class controller extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -195,10 +195,10 @@ public class controller extends HttpServlet {
     /**
      * Handles the HTTP <code>POST</code> method.
      *
-     * @param request  servlet request
+     * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException      if an I/O error occurs
+     * @throws IOException if an I/O error occurs
      */
     protected List<Recurso> getRecursos() {
 
@@ -373,7 +373,7 @@ public class controller extends HttpServlet {
         response.sendRedirect("index.jsp");
     }
 
-    protected void evaluacionesFecha(HttpServletRequest request, HttpServletResponse response)
+    protected List<Evaluacion> evaluacionesFecha(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String matricula = request.getParameter("matricula");
@@ -393,6 +393,29 @@ public class controller extends HttpServlet {
 
         this.reportes(request, response);
 
+        return evaluaciones;
+
+    }
+    
+    private void reportAlumno(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+        
+    response.setHeader("Content-Disposition", "attachment; filename=\"reporte.pdf\";");
+    response.setHeader("Cache-Control", "no-cache");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+    response.setContentType("application/pdf");
+    
+    ServletOutputStream out = response.getOutputStream();
+    
+    List<Evaluacion> evaluaciones;
+    evaluaciones = this.evaluacionesFecha(request, response);
+    
+        try {
+            
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        
     }
 
     @Override
@@ -419,8 +442,12 @@ public class controller extends HttpServlet {
                 case "crearReporteAlumno":
                     this.crearReporteAlumno(request, response);
                     break;
+                case "reportAlumno":
+                    this.reportAlumno(request, response);
+                    break;
                 default:
-                    throw new AssertionError();
+
+                // throw new AssertionError();
             }
 
         }
@@ -436,5 +463,7 @@ public class controller extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    
 
 }
