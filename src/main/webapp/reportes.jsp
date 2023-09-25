@@ -19,8 +19,10 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   </head>
   <body onload="cargarValores()">
     <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp" />
-    <jsp:include page="WEB-INF/paginas/reportes/cabeceroReporte.jsp" />
-    <jsp:include page="WEB-INF/paginas/reportes/tablaReporte.jsp" />
+    <div id="CyT">
+      <jsp:include page="WEB-INF/paginas/reportes/cabeceroReporte.jsp" />
+      <jsp:include page="WEB-INF/paginas/reportes/tablaReporte.jsp" />
+    </div>
     <jsp:include page="WEB-INF/paginas/comunes/footer.jsp" />
 
     <script>
@@ -46,19 +48,51 @@ uri="http://java.sun.com/jsp/jstl/core" %>
         document.getElementById("fechaF").value = v2;
       }
 
-      function reporte(at) {
-        $.get('../proyectoTerminal/controller?at=evDate', function (r) {
-          if(r){
-            $('#at').val(at);
-            $('#lista').val(JSON.stringify(r));
-            $('#frameReporte').submit();
-          }else{
-            alert('no se pudo generar el reporte: '+r);
-          }
-        });
-          
-        }
-      
+    function ocultarDiv() {
+  var div = document.getElementById("cabeza");
+  div.style.display = "none";
+  var div2 = document.getElementById("pie");
+  div2.style.display = "none";
+  var btn = document.getElementById("btnPDF");
+  btn.style.display = "none";
+  var btn2 = document.getElementById("btnEv");
+  btn2.style.display = "none";
+  var logo = document.getElementById("logoAxo");
+  logo.style.display = "block";
+  window.print();
+  mostrarDiv();
+}
+
+function mostrarDiv() {
+  var div = document.getElementById("cabeza");
+  div.style.display = "block";
+  var div2 = document.getElementById("pie");
+  div2.style.display = "block";
+  var btn = document.getElementById("btnPDF");
+  btn.style.display = "block";
+  var btn2 = document.getElementById("btnEv");
+  btn2.style.display = "block";
+  var logo = document.getElementById("logoAxo");
+  logo.style.display = "none";
+}
+
+      /*
+             function reporte(at) {
+             $.get('../proyectoTerminal/controller?at=evDate', function (r) {
+             if(r){
+             $('#at').val(at);
+             $('#lista').val(JSON.stringify(r));
+             $('#frameReporte').submit();
+             }else{
+             alert('no se pudo generar el reporte: '+r);
+             }
+             });
+             
+             }*/
+
+     
+     
+     
     </script>
 
     <script
@@ -66,5 +100,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.js"></script>
   </body>
 </html>

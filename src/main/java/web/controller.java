@@ -21,6 +21,8 @@ import domain.Usuario;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -32,11 +34,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JRExporter;
+import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
 /**
@@ -157,10 +164,6 @@ public class controller extends HttpServlet {
                     this.registrar(request, response);
                     break;
 
-                case "toPdf":
-                    this.crearReporteAlumno(request, response);
-                    break;
-
                 case "menu":
                     this.menu(request, response);
                     break;
@@ -218,7 +221,7 @@ public class controller extends HttpServlet {
         return evaluaciones;
 
     }
-
+    /* 
     protected void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -267,7 +270,7 @@ public class controller extends HttpServlet {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     protected void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -411,8 +414,18 @@ public class controller extends HttpServlet {
     evaluaciones = this.evaluacionesFecha(request, response);
     
         try {
-            
-        } catch (Exception e) {
+    JasperReport reporte = (JasperReport) JRLoader.loadObject(new URL(getServletContext().getRealPath("WEB-INF/reporte2.jasper")));
+    
+     Map parametros = new HashMap();
+        parametros.put("autor", "Juan");
+        parametros.put("titulo", "Reporte");
+    
+         JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, new JRBeanCollectionDataSource(evaluaciones));
+        JRExporter exporter = new JRPdfExporter();
+        exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+        exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
+        exporter.exportReport();
+        } catch (MalformedURLException | JRException e) {
             e.printStackTrace(System.out);
         }
         
@@ -438,9 +451,6 @@ public class controller extends HttpServlet {
                     break;
                 case "evDate":
                     this.evaluacionesFecha(request, response);
-                    break;
-                case "crearReporteAlumno":
-                    this.crearReporteAlumno(request, response);
                     break;
                 case "reportAlumno":
                     this.reportAlumno(request, response);

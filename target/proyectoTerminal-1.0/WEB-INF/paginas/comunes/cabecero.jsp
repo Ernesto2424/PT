@@ -1,6 +1,6 @@
 
-
-<nav class="navbar navbar-expand-lg bg-body-tertiary" >
+<img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/logo.png?raw=true" alt="logo" width="150px" height="100px" id="logoAxo" style="display: none">
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="cabeza">
     <div class="container-fluid">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/controller?at=menu"> <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/logo.png?raw=true" alt="logo" width="150px" height="100px"> </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

@@ -29,13 +29,13 @@
       <label class="form-label h3 blockquote">De:</label>
       <input type="date" name="fechaI" id="fechaI" required="true">
   </div>
-    <div class="col-md-6">
+  <div class="col-md-6">
         <label class="form-label h3 blockquote">Hasta:</label>
     <input type="date" name="fechaF" id="fechaF" required="true">
   </div>  
   <input type="hidden" name="matricula" value="${alumno.matricula}">
   <div class="col-12">
-      <button class="btn btn-primary" type="submit" style="border-radius: 4px">Generar Reporte</button>
+      <button class="btn btn-primary" type="submit" style="border-radius: 4px" id="btnEv">Generar Reporte</button>
   </div>
 </form>
     </div>

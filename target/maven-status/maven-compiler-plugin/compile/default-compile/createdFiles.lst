@@ -1,7 +1,6 @@
 datos\RecursoDao.class
 datos\EvaluacionDao.class
 datos\UsuarioDaoImp.class
-web\controller$1.class
 domain\Alumno.class
 datos\AlumnoDaoImp.class
 domain\Recurso.class

@@ -1,6 +1,6 @@
 
 
-<footer class="bg-dark text-white" style="margin-top: 150px; padding-top: 15px; padding-bottom: 15px; padding-right: 100px;">
+<footer class="bg-dark text-white" style="margin-top: 150px; padding-top: 15px; padding-bottom: 15px; padding-right: 100px;" id="pie">
     <div class="container">
 
         <nav class="row">
