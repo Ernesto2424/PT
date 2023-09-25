@@ -44,7 +44,7 @@
 
                     </div>
                     <br>
-                    <button class="btn btn-secondary col-md-2" onclick="ocultarDiv()" id="btnPDF"><img src="" alt="alt"/></button>
+                    <button class="btn btn-outline-light" onclick="ocultarDiv()" id="btnPDF"><img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/pdf.png?raw=true" alt="alt" width="60px" height="60px"/></button>
                 </div>
             </div>
         </div>
