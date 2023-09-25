@@ -1,4 +1,7 @@
 
+<div id="pyl" style="padding-top: 100px; display: none;">
+    <h6>Representación impresa de las evaluaciones de los alumnos de la plataforma digital Axolotl <i class="fa-solid fa-circle-check"></i></h6>
+</div>
 
 <footer class="bg-dark text-white" style="margin-top: 150px; padding-top: 15px; padding-bottom: 15px; padding-right: 100px;" id="pie">
     <div class="container">

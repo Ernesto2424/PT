@@ -15,6 +15,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
     />
+    <script src="https://kit.fontawesome.com/9c67a9a5ec.js" crossorigin="anonymous"></script>
     <title>Reportes</title>
   </head>
   <body onload="cargarValores()">
@@ -59,6 +60,8 @@ uri="http://java.sun.com/jsp/jstl/core" %>
   btn2.style.display = "none";
   var logo = document.getElementById("logoAxo");
   logo.style.display = "block";
+  var pf = document.getElementById("pyl");
+  pf.style.display = "block";
   window.print();
   mostrarDiv();
 }
@@ -74,6 +77,8 @@ function mostrarDiv() {
   btn2.style.display = "block";
   var logo = document.getElementById("logoAxo");
   logo.style.display = "none";
+  var pf = document.getElementById("pyl");
+  pf.style.display = "none";
 }
 
       /*

@@ -14,7 +14,7 @@
     
     <form class="row g-3" action="${pageContext.request.contextPath}/controller?at=evDate" method="POST" onsubmit="return validateDate()">
   <div class="col-md-11">
-      <h1 class="display-6 text-center">REPORTE #1</h1>
+      <h1 class="display-6 text-center">REPORTE DE EVALUACIONES DEL ALUMNO</h1>
   </div>
   <div class="col-md-11">
       <h3 id="nombre" class="h3 blockquote ">Alumno: ${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido}</h3>
