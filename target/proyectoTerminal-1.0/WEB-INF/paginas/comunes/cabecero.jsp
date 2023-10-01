@@ -36,10 +36,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <!<!-- rv: Recursos visuales -->
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rv">Visuales</a></li>
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rav">AudioVisuales</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rv">Lecturas</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rav">Videos</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rtest">Test</a></li>
+                        <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=rtest">Examenes</a></li>
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=report">Reportes</a></li>
 
                     </ul>
@@ -47,7 +47,7 @@
             </ul>
             <form class="d-flex" role="search">
                 <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">-->
-                <a class="nav-link active" href="${pageContext.request.contextPath}/controller?at=cerrarSesion">${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} (SALIR)</a>
+                <a class="btn btn-outline-success" href="${pageContext.request.contextPath}/controller?at=cerrarSesion">${alumno.nombre} ${alumno.primerApellido} ${alumno.segundoApellido} (SALIR)</a>
 
             </form>
         </div>
