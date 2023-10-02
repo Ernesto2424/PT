@@ -45,13 +45,13 @@
                     
         <div class="col" id="alfabeto">
           <div class="card shadow-sm">
-              <img src="../../../img/al.jpg" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
+              <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/al.jpg?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
                     <p class="card-text"> PROXIMAMENTE... </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
-                    <a href="" class="btn  btn-primary" target="_blank" disabled>Jugar</a>
+                    <input type="button" value="Jugar" disabled="disabled" class=" btn btn-primary"/>
                   
                 </div>
                 <small class="text-body-secondary">Alfabeto</small>
@@ -96,13 +96,13 @@
                     
         <div class="col" id="numeros">
           <div class="card shadow-sm">
-            <img src="/img/nahu.png" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/num.jpg?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
                     <p class="card-text">PROXIMAMENTE...</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
-                    <a href="" class="btn  btn-primary" target="_blank">Jugar</a>
+                    <input type="button" value="Jugar" disabled="disabled" class=" btn btn-primary"/>
                   
                 </div>
                 <small class="text-body-secondary">Numeros</small>
@@ -147,13 +147,13 @@
                     
         <div class="col" id="pronombresP">
           <div class="card shadow-sm">
-            <img src="/img/nahu.png" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
+            <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/pron.jpg?raw=true" alt="imagen" class="bd-placeholder-img card-img-top" width="100%" height="225">
                 <div class="card-body" >
-                    <p class="card-text"> Carrusel sobre los pronombres personales </p>
+                    <p class="card-text"> PROXIMAMENTE... </p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   
-                    <a href="${pageContext.request.contextPath}/juegos/pronombresPersonales/carruselPronombres.jsp" class="btn  btn-primary" target="_blank">Jugar</a>
+                    <input type="button" value="Jugar" disabled="disabled" class=" btn btn-primary"/>
                   
                 </div>
                 <small class="text-body-secondary">Pronombres Personales</small>

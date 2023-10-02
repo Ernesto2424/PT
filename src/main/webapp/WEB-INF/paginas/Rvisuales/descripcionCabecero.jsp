@@ -6,7 +6,7 @@
         <p class="lead text-body-secondary">Al utilizar recursos visuales, los niños pueden mejorar su comprensión y retención de información, ya que el componente visual ayuda a captar su atención y facilita la asociación de ideas.</p>
         <p>
             <!--agregar un link alucivo a lo que son los recursos visuales-->
-          <a href="https://youtu.be/gOCA2bm1NMs" target="_blank" class="btn btn-primary my-2">Hecha un vistazo!</a>
+          <a href="https://www.sepi.cdmx.gob.mx/storage/app/media/Libro%20Nahuatl%202017.pdf" target="_blank" class="btn btn-primary my-2">Hecha un vistazo!</a>
          
         </p>
       </div>

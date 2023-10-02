@@ -42,13 +42,11 @@
             </div>
         </div>
         <!-- Pantalla final -->
-        <div id="pantalla-final">
-            <form action="${pageContext.request.contextPath}/controller?at=evaluar" method="POST">
-                <h2>CORRECTAS:<input type="text" name="numCorrectas" id="numCorrectas">  </h2>
-                <h2>INCORRECTAS:<input type="text" name="numIncorrectas" id="numIncorrectas"> </h2>
-                <input type="submit" class="btn" name="Enviar"  value="EVALUAR">
-            </form>
-        </div>
+         <div id="pantalla-final">
+        <h2>CORRECTAS: <span id="numCorrectas">3</span></h2>
+        <h2>INCORRECTAS: <span id="numIncorrectas">2</span></h2>
+        <button class="btn" onclick="volverAlInicio()">VOLVER A JUGAR</button>
+    </div>
 
 
 
