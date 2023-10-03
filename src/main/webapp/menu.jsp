@@ -18,7 +18,6 @@
         <jsp:include page="WEB-INF/paginas/comunes/cabecero.jsp"></jsp:include>
         <jsp:include page="WEB-INF/paginas/menu/carrusel.jsp"></jsp:include>
         <jsp:include page="WEB-INF/paginas/menu/tarjeta1.jsp"></jsp:include>
-        <jsp:include page="WEB-INF/paginas/menu/tarjeta2.jsp"></jsp:include>
         <jsp:include page="WEB-INF/paginas/menu/tarjeta3.jsp"></jsp:include>
         <jsp:include page="WEB-INF/paginas/menu/tarjeta4.jsp"></jsp:include>
         <jsp:include page="WEB-INF/paginas/menu/tarjeta5.jsp"></jsp:include>

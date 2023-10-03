@@ -28,7 +28,7 @@
 
                                                 <td>${eva.recurso.nombre}</td>
                                                 <td>${eva.recurso.descripcion}</td>
-                                                <td>${eva.calificacion}</td>
+                                                <td>${eva.calificacion} / 10</td>
                                                 <td>${eva.fecha}</td>
 
                                             </tr>

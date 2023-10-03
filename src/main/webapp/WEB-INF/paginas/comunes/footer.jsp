@@ -12,21 +12,21 @@
                 <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/logo.png?raw=true" alt="logo" class="img-logo mr-2" width="150px" height="80px" >
             </a>  
 
-            <ul class="col-3 list-unstyled">
-                <li class="font-weight-bold text-uppercase">Resource</li>
-                <li><a href="#" class="text-reset">link1</a></li>
-                <li><a href="#" class="text-reset">link1</a></li>
-                <li><a href="#" class="text-reset">link1</a></li>
+            <ul class="col-md-4 list-unstyled">
+                <li class="font-weight-bold text-uppercase">Ligas de Interes</li>
+                <li><a target="_blank" href="https://www.gob.mx/inali" class="text-reset">Instituto Nacional de Lenguas Indígenas</a></li>
+                <li><a target="_blank" href="http://www.gaceta.udg.mx/un-vistazo-al-mundo-nahuatl/" class="text-reset">Un vistazo al mundo náhuatl</a></li>
+                <li><a target="_blank" href="https://www.excelsior.com.mx/nacional/impulsan-recuperacion-de-lengua-nahuatl-en-morelos/1254031" class="text-reset">Recuperación de lengua náhuatl en Morelos</a></li>
             </ul>
 
             <ul class="col-3 list-unstyled">
-                <li class="font-weight-bold text-uppercase">Quick Links</li>
-                <li><a href="#" class="text-reset">link1</a></li>
-                <li><a href="#" class="text-reset">link1</a></li>
-                <li><a href="#" class="text-reset">link1</a></li>
+                <li class="font-weight-bold text-uppercase">Enlaces Rapidos</li>
+                <li><a target="_blank" href="https://educacionbasica.sep.gob.mx/multimedia/RSC/BASICA/Documento/201611/201611-3-RSC-EN6CTWPkgG-libro_del_maestro_-_na_huatl-cicloii.pdf" class="text-reset">Náhuatl como segunda lengua</a></li>
+                <li><a target="_blank" href="https://www.sepi.cdmx.gob.mx/storage/app/media/Libro%20Nahuatl%202017.pdf" class="text-reset">Aprendamos el idioma Náhuatl</a></li>
+                <li><a target="_blank" href="https://www.gob.mx/inpi/articulos/nahuatlahtolli-lengua-nahuatl-libro-ilustrado" class="text-reset">Nahuatlahtolli. Lengua náhuatl.</a></li>
             </ul>
 
-            <ul class="col-3 list-unstyled">
+            <ul class="col-2 list-unstyled">
                 <li class="font-weight-bold text-uppercase">Redes Sociales</li>
                 <li class="d-flex justify-content-between">
                     <a href="#" class="text-reset"><i class="bi bi-facebook"></i></a>

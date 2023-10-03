@@ -114,6 +114,21 @@ public class controller extends HttpServlet {
         request.getRequestDispatcher("reportes.jsp").forward(request, response);
     }
 
+    private void cuentos(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("cuentos.jsp").forward(request, response);
+    }
+
+    private void canciones(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("canciones.jsp").forward(request, response);
+    }
+    
+    private void AcercaDe(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("acercaDe.jsp").forward(request, response);
+    }
+
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession sesion = request.getSession();
@@ -184,6 +199,18 @@ public class controller extends HttpServlet {
                     this.reportes(request, response);
                     break;
 
+                case "cuentos":
+                    this.cuentos(request, response);
+                    break;
+
+                case "canciones":
+                    this.canciones(request, response);
+                    break;
+                    
+                    case "acerca":
+                    this.AcercaDe(request, response);
+                    break;
+
                 case "cerrarSesion":
                     this.cerrarSesion(request, response);
                     break;
@@ -221,6 +248,7 @@ public class controller extends HttpServlet {
         return evaluaciones;
 
     }
+
     /* 
     protected void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -399,36 +427,36 @@ public class controller extends HttpServlet {
         return evaluaciones;
 
     }
-    
-    private void reportAlumno(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        
-    response.setHeader("Content-Disposition", "attachment; filename=\"reporte.pdf\";");
-    response.setHeader("Cache-Control", "no-cache");
-    response.setHeader("Pragma", "no-cache");
-    response.setDateHeader("Expires", 0);
-    response.setContentType("application/pdf");
-    
-    ServletOutputStream out = response.getOutputStream();
-    
-    List<Evaluacion> evaluaciones;
-    evaluaciones = this.evaluacionesFecha(request, response);
-    
+
+    private void reportAlumno(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        response.setHeader("Content-Disposition", "attachment; filename=\"reporte.pdf\";");
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+        response.setContentType("application/pdf");
+
+        ServletOutputStream out = response.getOutputStream();
+
+        List<Evaluacion> evaluaciones;
+        evaluaciones = this.evaluacionesFecha(request, response);
+
         try {
-    JasperReport reporte = (JasperReport) JRLoader.loadObject(new URL(getServletContext().getRealPath("WEB-INF/reporte2.jasper")));
-    
-     Map parametros = new HashMap();
-        parametros.put("autor", "Juan");
-        parametros.put("titulo", "Reporte");
-    
-         JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, new JRBeanCollectionDataSource(evaluaciones));
-        JRExporter exporter = new JRPdfExporter();
-        exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-        exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
-        exporter.exportReport();
+            JasperReport reporte = (JasperReport) JRLoader.loadObject(new URL(getServletContext().getRealPath("WEB-INF/reporte2.jasper")));
+
+            Map parametros = new HashMap();
+            parametros.put("autor", "Juan");
+            parametros.put("titulo", "Reporte");
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, new JRBeanCollectionDataSource(evaluaciones));
+            JRExporter exporter = new JRPdfExporter();
+            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
+            exporter.exportReport();
         } catch (MalformedURLException | JRException e) {
             e.printStackTrace(System.out);
         }
-        
+
     }
 
     @Override
@@ -473,7 +501,5 @@ public class controller extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    
 
 }

@@ -24,10 +24,10 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Canciones</a>
+                    <a class="nav-link" aria-current="page" href="${pageContext.request.contextPath}/controller?at=canciones">Canciones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cuentos</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?at=cuentos">Cuentos</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -43,6 +43,10 @@
                         <li><a class="dropdown-item" href="${pageContext.request.contextPath}/controller?at=report">Reportes</a></li>
 
                     </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/controller?at=acerca">Acerca De</a>
                 </li>
             </ul>
             <form class="d-flex" role="search">

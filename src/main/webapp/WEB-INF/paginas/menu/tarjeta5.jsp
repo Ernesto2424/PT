@@ -1,8 +1,10 @@
 
- <div class="card mb-3" style="max-width: 850px;" >
+ <div class="card mb-3" style="max-width: 850px; left: 500px;" >
         <div class="row g-0">
           <div class="col-md-4">
+              <a href="${pageContext.request.contextPath}/juegos.jsp" class="text-reset-uppercase d-flex align-items-center">
               <img src="https://github.com/Ernesto2424/PT/blob/main/src/main/webapp/img/img_menu/juego.jpg?raw=true" class="img-fluid rounded-start" alt="..." height="600px">
+              </a>
           </div>
           <div class="col-md-8">
             <div class="card-body">
