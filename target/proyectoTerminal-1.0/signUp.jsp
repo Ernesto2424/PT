@@ -52,7 +52,7 @@
                         <img src="logo.png" alt="" width="81px">
                     </div>
 
-                    <p style="color: #ff0000">${mensaje}</p>
+                    <p style="color: #ff0000">${msj}</p>
 
                     <h2 class="fw-bold text-center py-5">Bienvenido</h2>
 
@@ -95,12 +95,25 @@
 
                         <div class="mb-4">
                             <label for="grupo" class="form-label">Grupo:</label>
-                            <input type="text" name="grupo" id="validationCustom01" required class="form-control">
+                            <select name="grupo" id="validationCustom01" required class="form-select" aria-label="Seleccione una opcion">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                            </select>
+                            <!--<input type="text" name="grupo" id="validationCustom01" required class="form-control">-->
                         </div>
 
                         <div class="mb-4">
                             <label for="turno" class="form-label">Turno:</label>
-                            <input type="text" name="turno" id="validationCustom01" required class="form-control">
+                            <select name="turno" id="validationCustom01" required class="form-select" aria-label="Seleccione una opcion">
+                                <option value="Matutino">Matutino</option>
+                                <option value="Vespertino">Vespertino</option>
+                                <option value="Mixto">Mixto</option>
+                                <option value="Completo">Completo</option>
+                            </select>
+                            <!--<input type="text" name="turno" id="validationCustom01" required class="form-control">-->
                         </div>
 
                         <div class="mb-4">

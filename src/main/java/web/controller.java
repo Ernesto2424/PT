@@ -81,76 +81,81 @@ public class controller extends HttpServlet {
 
     private void inicial(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina del login 
         request.getRequestDispatcher("login.jsp").forward(request, response);
     }
 
     private void registrar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina del registro de usuario
         request.getRequestDispatcher("signUp.jsp").forward(request, response);
     }
 
     private void menu(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de menu
         request.getRequestDispatcher("menu.jsp").forward(request, response);
     }
 
     private void recursosVisuales(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina los recursos visuales
         request.getRequestDispatcher("visuales.jsp").forward(request, response);
     }
 
     private void recursosAudioVisuales(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de los recursos audiovisuales
         request.getRequestDispatcher("audioVisuales.jsp").forward(request, response);
     }
 
     private void examenes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de las evaluaciones
         request.getRequestDispatcher("examenes.jsp").forward(request, response);
     }
 
     private void reportes(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de los reportes
         request.getRequestDispatcher("reportes.jsp").forward(request, response);
     }
 
     private void cuentos(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de los cuentos
         request.getRequestDispatcher("cuentos.jsp").forward(request, response);
     }
 
     private void canciones(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de las canciones
         request.getRequestDispatcher("canciones.jsp").forward(request, response);
     }
-    
+
     private void AcercaDe(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //redireccionamos y pasamos el control a la pagina de acerca de
         request.getRequestDispatcher("acercaDe.jsp").forward(request, response);
     }
 
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        //obtener la sesion, sea una nueva o existente
         HttpSession sesion = request.getSession();
+        //validacion para una sesion existente
         if (sesion != null) {
+            /*
+            removemos los atributos de alumno y usuario
+            y finalizamos la sesion (invalidar)
+            */
             sesion.removeAttribute("alumno");
             sesion.removeAttribute("usuario");
             sesion.invalidate();
         }
         // redirigimos al inicio
         response.sendRedirect("index.jsp");
-    }
-
-    private void getEvaluacionesByDate(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        // obtenemos los parametros (fechas de evaluaciones)
-        String matricula = request.getParameter("matricula");
-        System.out.println("matricula = " + matricula);
-        String fechaI = request.getParameter("fechaI");
-        System.out.println("fechaI = " + fechaI);
-        String fechaF = request.getParameter("fechaF");
-        System.out.println("fechaF = " + fechaF);
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the
@@ -206,8 +211,8 @@ public class controller extends HttpServlet {
                 case "canciones":
                     this.canciones(request, response);
                     break;
-                    
-                    case "acerca":
+
+                case "acerca":
                     this.AcercaDe(request, response);
                     break;
 
@@ -231,17 +236,23 @@ public class controller extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected List<Recurso> getRecursos() {
-
+        /*creamos una lista de recursos(juegos,test,etc)
+          y obtenemos los recursos disponibles desde la
+        base de datos
+         */
         List<Recurso> recursos;
         RecursoDao recurso = new RecursoDaoImp();
         recursos = recurso.select();
-
+        //regresamos los recursos para compartirlos a la sesion
         return recursos;
 
     }
 
     protected List<Evaluacion> getEvaluaciones() {
-
+        /*creamos una lista de evaluaciones del alumno
+          y obtenemos las evaluaciones disponibles desde la
+        base de datos
+         */
         List<Evaluacion> evaluaciones;
         EvaluacionDao ev = new EvaluacionDaoImp();
         evaluaciones = ev.select();
@@ -249,57 +260,13 @@ public class controller extends HttpServlet {
 
     }
 
-    /* 
-    protected void crearReporteAlumno(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        ServletOutputStream out = response.getOutputStream();
-        try {
-            InputStream logoEmpresa = this.getServletConfig()
-                    .getServletContext()
-                    .getResourceAsStream("reportes/img/logo.png"),
-                    reporteAlumno = this.getServletConfig()
-                            .getServletContext()
-                            .getResourceAsStream("reportes/ReporteEvaluacionAlumno.jasper");
-
-            if (logoEmpresa != null && reporteAlumno != null) {
-                String jsonEvalaucionAlumno = request.getParameter("lista"); // OJO
-                Gson gson = new Gson();
-                List<Evaluacion> reporteEvaluacion = new ArrayList<>();
-                List<Evaluacion> reporteEvaluacion2 = new ArrayList<>();
-
-                reporteEvaluacion.add(new Evaluacion());
-                reporteEvaluacion2 = gson.fromJson(jsonEvalaucionAlumno, new TypeToken<List<Evaluacion>>() {
-                }.getType());
-                reporteEvaluacion.addAll(reporteEvaluacion2);
-
-                JasperReport report = (JasperReport) JRLoader.loadObject(reporteAlumno);
-                JRBeanArrayDataSource ds = new JRBeanArrayDataSource(reporteEvaluacion.toArray());
-
-                Map<String, Object> parameters = new HashMap();
-                parameters.put("ds", ds);
-                parameters.put("logoEmpresa", logoEmpresa);
-                response.setContentType("application/pdf");
-                response.addHeader("Content-disposition", "inline; filename=ReporteEvaluacionAlumno.pdf");
-                JasperPrint jasperPrint = JasperFillManager.fillReport(report, parameters, ds);
-                JasperExportManager.exportReportToPdfStream(jasperPrint, out);
-                out.flush();
-                out.close();
-            } else {
-                response.setContentType("text/plain");
-                out.println("no se pudo generar el reporte");
-                out.println(
-                        "esto puede debrse a que la lista de datos no fue recibida o el archivo plantilla del reporte no se ha encontrado");
-                out.println("contacte a soporte");
-            }
-        } catch (Exception e) {
-            response.setContentType("text/plain");
-            out.print("ocurrió un error al intentar generar el reporte:" + e.getMessage());
-            e.printStackTrace();
-        }
-
-    }*/
-
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     protected void login(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -321,9 +288,13 @@ public class controller extends HttpServlet {
 
         // verificacion de los datos del usuario
         if (usuario != null) {
-            // preguntamos si la contraseña es la misma
+            // preguntamos si la contraseña es la correcta
             if (password.equals(usuario.getPassword())) {
-
+                /*
+                Una vez que la contraseña es correcta, obtenemos
+                los datos completos del alumno y los compartimos
+                a la sesion
+                 */
                 Alumno alumnoEncontrado = null;
                 AlumnoDao alumno = new AlumnoDaoImp();
                 alumnoEncontrado = alumno.selectById(new Alumno(matricula));
@@ -336,14 +307,20 @@ public class controller extends HttpServlet {
                 sesion.setAttribute("evaluaciones", this.getEvaluaciones());
 
             } else {
+                /*
+                si la contraseña es incorrecta definimos
+                un usuario como nulo y un mensaje a mostrar
+                con la leyenda que se observa
+                 */
                 sesion.setAttribute("usuario", null);
                 sesion.setAttribute("mensaje", "La contraseña no es Correcta");
 
             }
         } else {
+            //si los datos no existen, se arroja un mensaje con la leyenda siguiente
             sesion.setAttribute("mensaje", "El usuario ingresado no Existe");
         }
-
+        //en cualquier situacion redirigimos al index
         response.sendRedirect("index.jsp");
 
     }
@@ -364,25 +341,35 @@ public class controller extends HttpServlet {
         Alumno alumno = new Alumno(matricula, nombre, primerApellido, segundoApellido, grupo, turno);
         Usuario usuario = new Usuario(2, alumno, password);
 
-        // persistimos en la base de datos al alumno y usuario
+        /*se crea un objeto del tipo alumnoDao
+          y lo buscamos en la base de datos
+         */
         AlumnoDao aluDao = new AlumnoDaoImp();
-        aluDao.insert(alumno);
+        Alumno alumnV = aluDao.selectById(alumno);
 
-        UsuarioDao usuDao = new UsuarioDaoImp();
-        int valor = usuDao.insert(usuario);
+        //se realiza la validacion del usuario existente
+        if (alumnV == null) {
 
-        String msj = "algo ha fallado";
-        if (valor > 0) {
-            msj = "se ha creado exitosamente";
+            // persistimos en la base de datos al alumno y usuario
+            aluDao.insert(alumno);
+            UsuarioDao usuDao = new UsuarioDaoImp();
+            int valor = usuDao.insert(usuario);
+
+            // this.registrar(request, response);
+            this.login(request, response);
+        } else {
+            //si el usuario a registrar ya se encuentra en la base de datos
+            //arrojamos el mensaje que se observa
+            request.setAttribute("msj", "Usuario ya existente");
+            this.registrar(request, response);
         }
-        request.setAttribute("mensaje", msj);
-        // this.registrar(request, response);
-        this.login(request, response);
+
     }
 
     protected void evaluar(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // obtener los datos del test
+
+        // obtener los datos de la evaluacion realizada
         int numCorrectas = Integer.parseInt(request.getParameter("buenas"));
         int numIncorrectas = Integer.parseInt(request.getParameter("malas"));
         int idRecurso = Integer.parseInt(request.getParameter("idRecurso"));
@@ -406,7 +393,8 @@ public class controller extends HttpServlet {
 
     protected List<Evaluacion> evaluacionesFecha(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        /*obtenemos los datos del formulario para poder buscar las evaluaciones del alumno
+          en el periodo de tiempo que se determine*/
         String matricula = request.getParameter("matricula");
         System.out.println("matricula = " + matricula);
         String fechaI = request.getParameter("fechaI");
@@ -414,48 +402,21 @@ public class controller extends HttpServlet {
         String fechaF = request.getParameter("fechaF");
         System.out.println("fechaF = " + fechaF);
 
+        //creamos un alumno con la matricula obtenida y una lista para las evaluaciones
         Alumno al = new Alumno(matricula);
         List<Evaluacion> evaluaciones;
 
+        //buscamos en la base de datos las evaluaciones del alumno por el rango de fecha
         EvaluacionDao evalua = new EvaluacionDaoImp();
         evaluaciones = evalua.selectByDate(al, fechaI, fechaF);
 
+        //se comparte una lista de evaluaciones obtenidas
         request.setAttribute("evaluaFecha", evaluaciones);
 
+        //redireccionamos a la pagina actual para poder mostrar las evaluaciones en la tabla
         this.reportes(request, response);
 
         return evaluaciones;
-
-    }
-
-    private void reportAlumno(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        response.setHeader("Content-Disposition", "attachment; filename=\"reporte.pdf\";");
-        response.setHeader("Cache-Control", "no-cache");
-        response.setHeader("Pragma", "no-cache");
-        response.setDateHeader("Expires", 0);
-        response.setContentType("application/pdf");
-
-        ServletOutputStream out = response.getOutputStream();
-
-        List<Evaluacion> evaluaciones;
-        evaluaciones = this.evaluacionesFecha(request, response);
-
-        try {
-            JasperReport reporte = (JasperReport) JRLoader.loadObject(new URL(getServletContext().getRealPath("WEB-INF/reporte2.jasper")));
-
-            Map parametros = new HashMap();
-            parametros.put("autor", "Juan");
-            parametros.put("titulo", "Reporte");
-
-            JasperPrint jasperPrint = JasperFillManager.fillReport(reporte, parametros, new JRBeanCollectionDataSource(evaluaciones));
-            JRExporter exporter = new JRPdfExporter();
-            exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-            exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, out);
-            exporter.exportReport();
-        } catch (MalformedURLException | JRException e) {
-            e.printStackTrace(System.out);
-        }
 
     }
 
@@ -479,9 +440,6 @@ public class controller extends HttpServlet {
                     break;
                 case "evDate":
                     this.evaluacionesFecha(request, response);
-                    break;
-                case "reportAlumno":
-                    this.reportAlumno(request, response);
                     break;
                 default:
 

@@ -1,5 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <section id="evaluaciones">
 
     <div class="container">
@@ -53,7 +54,7 @@
                     
                     <c:if test="${tam>0}">
         <!-- El contenido dentro de esta etiqueta se ejecutará si la condición es verdadera -->
-        <h5>Tu promedio es: ${prom}</h5>
+        <h5>Tu promedio es: <fmt:formatNumber value="${prom}" maxFractionDigits="1" /> </h5>
                     </c:if>
                     
 
