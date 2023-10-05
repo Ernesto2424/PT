@@ -47,7 +47,7 @@
                 <input type="hidden" name="idRecurso" id="idRecurso" value="${recursos[5].id}">
                 <input type="hidden" name="idAlumno" id="idAlumno" value="${alumno.matricula}">
                 <input type="hidden" name="fecha" id="fecha">
-                <button class="btn" style="margin-top: 5px">Enviar Resultado</button>
+                <button class="btn" style="padding-top: 10px;">Enviar Resultado</button>
             </form>
 
 
